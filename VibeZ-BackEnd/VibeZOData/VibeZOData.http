@@ -1,0 +1,6 @@
+@VibeZOData_HostAddress = http://localhost:5241
+
+GET {{VibeZOData_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

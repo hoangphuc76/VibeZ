@@ -1,0 +1,269 @@
+/* Body styling */
+
+/* navbar */
+
+.payment-methods img {
+    width: 40px;
+    margin: 0 10px;
+    border-radius: 10px;
+    
+}
+
+.features-list li::before {
+    content: '√';
+    color: white;
+    margin-right: 10px;
+}
+
+/* Plan card styling */
+.plans-section {
+    margin-top: 6%;
+}
+.plan-card {
+    background-color: #242424;
+    padding: 20px;
+    color: #A0A0A0;
+    margin-bottom: 20px;
+    height: 28vw;
+}
+
+.plan-card h3 {
+    color: white;
+}
+
+.plan-card p {
+    color: #A0A0A0;
+}
+
+.plan-card ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.plan-card ul li {
+    margin-bottom: 10px;
+}
+.plan {
+    text-align: start;
+    height: 15vw;
+}
+.plan p {
+    font-weight: bold;
+}
+.plan li {
+    list-style: disc;
+    line-height: 50%;
+}
+.plan p, ul, li {
+    font-size: 12px;
+    color: white;
+}
+
+.mini-plan h3 {
+    color: #C4FF63;
+}
+.individual-plan h3 {
+    color: #FFD2D7;
+}
+.student-plan h3 {
+    color:  #C4B1D4;
+}
+hr {
+    background-color: #444;
+
+}
+/* Buttons styling */
+.btn {
+    border-radius: 100px;
+    transition: transform 0.3s ease; /* Tạo hiệu ứng chuyển đổi mượt mà */
+}
+.btn-plan {
+    width: 80%;
+    padding: 5px 5px ;
+    border-radius: 50px;
+    margin-left: 8%;
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.btn-mini {
+    background-color: #C4FF63;
+    color: black;
+}
+
+.btn-individual {
+    background-color:  #FFD2D7;
+    color: black;
+}
+
+.btn-student {
+    background-color: #C4B1D4;
+    color: black;
+}
+.btn-secondary {
+    background-color: #242424;
+}
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive */
+/* Responsive cho các thiết bị nhỏ (smartphone, màn hình dưới 600px) */
+@media only screen and (max-width: 600px) {
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar .logo {
+        width: 100%;
+        justify-content: center;
+    }
+    .navbar_info {
+        width: 100%;
+        justify-content: center;
+        font-size: 10px;
+    }
+    .navbar_info p {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .navbar img {
+        height: 30px;
+        width: 30px;
+    }
+    .navbar_img i {
+        margin-top: 5%;
+        margin-left: 5%;
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 50%;
+    }
+
+    /* Plans section */
+    .plan-card {
+        height: auto;
+    }
+    .plan {
+        height: auto;
+        text-align: center;
+    }
+
+    /* Payment methods */
+    .payment-methods img {
+        width: 30px;
+        margin: 5px;
+    }
+
+    /* Buttons */
+    .btn-plan {
+        width: 90%;
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* Font sizes */
+    .plans-header h1 {
+        font-size: 18px;
+    }
+    .plans-header p {
+        font-size: 12px;
+    }
+    .premium-features h2 {
+        font-size: 20px;
+    }
+}
+
+/* Responsive cho tablet (màn hình từ 600px đến 1024px) */
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar .logo {
+        width: 100%;
+        justify-content: center;
+    }
+    .navbar_info {
+        width: 100%;
+        justify-content: center;
+        font-size: 12px;
+    }
+    .navbar_info p {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .navbar img {
+        height: 35px;
+        width: 35px;
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 30%;
+    }
+
+    /* Plans section */
+    .plan-card {
+        height: auto;
+    }
+    .plan {
+        height: auto;
+        text-align: center;
+    }
+
+    /* Payment methods */
+    .payment-methods img {
+        width: 35px;
+        margin: 5px;
+    }
+
+    /* Buttons */
+    .btn-plan {
+        width: 85%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Font sizes */
+    .plans-header h1 {
+        font-size: 22px;
+    }
+    .plans-header p {
+        font-size: 13px;
+    }
+    .premium-features h2 {
+        font-size: 22px;
+    }
+}
+
+/* Responsive cho desktop nhỏ (màn hình từ 1024px đến 1440px) */
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .navbar_info {
+        font-size: 14px;
+    }
+
+    .plans-header h1 {
+        font-size: 24px;
+    }
+
+    .plans-header p {
+        font-size: 14px;
+    }
+
+    .btn-plan {
+        width: 75%;
+    }
+}

@@ -1,0 +1,15 @@
+D:\VibeZ-Backend\VibeZ\BusinessObjects\bin\Release\net8.0\BusinessObjects.deps.json
+D:\VibeZ-Backend\VibeZ\BusinessObjects\bin\Release\net8.0\BusinessObjects.runtimeconfig.json
+D:\VibeZ-Backend\VibeZ\BusinessObjects\bin\Release\net8.0\BusinessObjects.dll
+D:\VibeZ-Backend\VibeZ\BusinessObjects\bin\Release\net8.0\BusinessObjects.pdb
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.csproj.AssemblyReference.cache
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.AssemblyInfoInputs.cache
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.AssemblyInfo.cs
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.csproj.CoreCompileInputs.cache
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.sourcelink.json
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.dll
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\refint\BusinessObjects.dll
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.pdb
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\BusinessObjects.genruntimeconfig.cache
+D:\VibeZ-Backend\VibeZ\BusinessObjects\obj\Release\net8.0\ref\BusinessObjects.dll
