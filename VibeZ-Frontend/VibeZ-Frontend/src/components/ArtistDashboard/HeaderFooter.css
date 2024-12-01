@@ -1,0 +1,84 @@
+.artist-dashboard {
+  display: flex; /* Sử dụng Flexbox để bố trí các phần tử con */
+ flex-direction: column;  /*Sắp xếp các phần tử con theo chiều dọc*/
+ min-height: 100vh;  /*Đặt chiều cao tối thiểu của dashboard bằng chiều cao của viewport (100% chiều cao cửa sổ trình duyệt)*/
+}
+
+.content {
+ flex: 1;  /*Chiếm không gian còn lại trong dashboard*/
+ padding-bottom: 20px; /* Để có khoảng cách giữa nội dung và footer */
+}
+
+ /* Header.css */
+ header {
+   position: sticky; /* Giữ header dính ở đầu trang khi cuộn xuống */
+   top: 0; /* Vị trí cách mép trên của cửa sổ trình duyệt 0px */
+   z-index: 1000; /* Đảm bảo header luôn ở trên các phần tử khác */
+   display: flex;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #464545;
+ }
+
+ h1 {
+   margin: 0;
+ }
+
+ nav {
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+ }
+
+ nav a {
+   margin: 0 10px;
+   text-decoration: none;
+   color: #ffffff;
+ }
+
+
+/* Footer Styles */
+footer {
+   background-color: #1c1c1c;
+   color: #b0b0b0;
+   padding: 15px 0;
+   text-align: center;
+   position: relative;
+   bottom: 0;
+   width: 100%;
+}
+
+.footer-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 0 20px;
+}
+
+.footer-section {
+   flex: 1;
+   min-width: 150px;
+   margin-bottom: 20px;
+}
+
+h2, h4 {
+   color: #e0e0e0;
+}
+
+a {
+   color: #b0b0b0;
+   text-decoration: none;
+}
+
+a:hover {
+   color: #ff6b6b;
+}
+
+.copyright {
+   border-top: 1px solid #333;
+   padding-top: 10px;
+   font-size: 0.9em;
+   color: #888;
+}

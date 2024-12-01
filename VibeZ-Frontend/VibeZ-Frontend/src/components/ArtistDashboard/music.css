@@ -1,0 +1,89 @@
+/* Áp dụng toàn bộ style vào class app-container thay vì body */
+.app-container {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+main {
+    padding: 2rem;
+}
+
+#music-section h2 {
+    font-size: 2rem;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.tabs button:hover {
+    text-decoration: underline;
+}
+
+.tab-content {
+    margin-top: 2rem;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Other styles remain unchanged */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    table-layout: auto; /* Ensure table adjusts automatically based on content */
+}
+
+table th, table td {
+    padding: 0.5rem; /* Reduced padding for closer spacing */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* You can also set a minimum width for specific columns if needed */
+table th:nth-child(1), table td:nth-child(1) { width: 10%; } /* No column */
+table th:nth-child(2), table td:nth-child(2) { width: 10%; } /* Title column */
+table th:nth-child(3), table td:nth-child(3) { width: 10%; } /* Genre column */
+table th:nth-child(4), table td:nth-child(4) { width: 10%; } /* Listeners column */
+table th:nth-child(5), table td:nth-child(5) { width: 15%; } /* First Added column */
+table th:nth-child(6), table td:nth-child(6) { width: 15%; } /* Image column */
+table th:nth-child(7), table td:nth-child(7) { width: 30%; } /* Track column */
+
+
+#playlists h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+#playlists p {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Search Bar Styles */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.search-bar input[type="text"] {
+    padding: 0.5rem;
+    width: 200px;
+}
+
+.search-bar select {
+    padding: 0.5rem;
+}
+
+
