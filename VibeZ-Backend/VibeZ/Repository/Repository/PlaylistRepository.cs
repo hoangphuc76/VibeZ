@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 using System;
@@ -10,49 +9,47 @@ using System.Threading.Tasks;
 
 namespace Repositories.Repository
 {
-    public class PlaylistRepository : IPlaylistRepository
+    public class PlaylistRepository : Repository<Playlist>, IPlaylistRepository
     {
         private readonly VibeZDbContext _context;
-
-        public PlaylistRepository()
+        public PlaylistRepository (VibeZDbContext context) : base (context)
         {
-            _context = new VibeZDbContext();
+            _context = context;
         }
+
         public async Task<IEnumerable<Playlist>> GetAllPlaylistByUserId(Guid id)
         {
-            return await PlaylistDAO.Instance.GetAllPlaylistsByUserId(id);
+            return await _context.Playlists
+                                            .Where(x => x.UserId == id)
+                                            .AsNoTracking()  // Không theo dõi thực thể
+                                            .ToListAsync();
         }
-        public async Task<IEnumerable<Playlist>> GetAllPlaylists()
-        {
-            return await PlaylistDAO.Instance.GetAllPlaylist();
-        }
+
         public async Task<int> TotalPlaylist()
         {
             return await _context.Playlists.CountAsync();
         }
-        public async Task<Playlist> GetPlaylistById(Guid playlistId)
-        {
-            return await PlaylistDAO.Instance.GetPlaylistById(playlistId);
-        }
+ 
         public async Task<IEnumerable<Track>> GetTracksByPlaylistId(Guid playlistId)
         {
-            return await PlaylistDAO.Instance.GetTracksByPlaylistId(playlistId);
+            var playlist = await _context.Playlists
+                                .AsNoTracking()
+                                .AsSplitQuery() // Chia truy vấn thành nhiều phần
+                                .Include(p => p.TrackPlayLists)
+                                   .ThenInclude(tp => tp.Track)
+                                   .ThenInclude(t => t.Album)
+                                .Include(p => p.TrackPlayLists)
+                                   .ThenInclude(tp => tp.Track)
+                                   .ThenInclude(t => t.Artist)
+                                .FirstOrDefaultAsync(l => l.PlaylistId == playlistId);
+
+            if (playlist == null)
+                return new List<Track>();
+
+            return playlist.TrackPlayLists.Select(la => la.Track);
         }
 
-        public async Task AddPlaylist(Playlist playlist)
-        {
-            await PlaylistDAO.Instance.Add(playlist);
-        }
-
-        public async Task UpdatePlaylist(Playlist playlist)
-        {
-            await PlaylistDAO.Instance.Update(playlist);
-        }
-
-        public async Task DeletePlaylist(Playlist playlistId)
-        {
-            await PlaylistDAO.Instance.Delete(playlistId);
-        }
+       
     }
 
 }

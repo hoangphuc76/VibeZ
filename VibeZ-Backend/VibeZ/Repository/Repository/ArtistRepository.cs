@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Repositories.IRepository;
 using System;
 using System.Collections.Generic;
@@ -15,76 +14,60 @@ using VibeZDTO;
 
 namespace Repositories.Repository
 {
-    public class ArtistRepository : IArtistRepository
+    public class ArtistRepository : Repository<Artist>, IArtistRepository
     {
         private readonly VibeZDbContext _context;
-        public ArtistRepository()
+        
+        public ArtistRepository(VibeZDbContext context) : base(context)
         {
-            _context = new VibeZDbContext();
+            _context = context;
         }
         public async Task<int> TotalArtist()
         {
             return await Task.FromResult(_context.Artists.AsNoTrackingWithIdentityResolution().Count());
         }
-        public async Task<IEnumerable<AdminArtistDTO>> GetAdminArtists()
-        {
-            var artists = await _context.Artists.AsNoTrackingWithIdentityResolution().ToListAsync();
-
-            var adminArtists = new List<AdminArtistDTO>();
-
-            foreach (var artist in artists)
-            {
-                var totalSong = await TrackDAO.Instance.CountTrack(artist.Id);
-                var totalAlbum = await AlbumDAO.Instance.CountAlbum(artist.Id);
-
-                adminArtists.Add(new AdminArtistDTO
-                {
-                    Id = artist.Id,
-                    Name = artist.Name,
-                    Image = artist.Image,
-                    DOB = artist.CreateDate,
-                    TotalSong = totalSong,
-                    TotalAlbum = totalAlbum
-                });
-            }
-
-            return adminArtists;
-        }
+       
         public async Task<Artist> GetArtistByUserId(Guid userId)
         {
             return await _context.Artists.FirstOrDefaultAsync(x => x.UserId == userId);
         }
-        public async Task<IEnumerable<Artist>> GetAllArtists()
+        private async Task<IDictionary<Guid, int>> ArtistPopularity()
         {
-            return await ArtistDAO.Instance.GetAllArtists();
-        }
+            var artist = await _context.Artists
+                                      .Include(a => a.Tracks) // Sử dụng Include để nạp track liên quan
+                                      .AsNoTracking()
+                                      .ToListAsync();
 
-        public async Task<Artist> GetArtistById(Guid artistId)
-        {
-            return await ArtistDAO.Instance.GetArtistById(artistId);
-        }
-
-        public async Task AddArtist(Artist artist)
-        {
-            await ArtistDAO.Instance.Add(artist);
-        }
-
-        public async Task UpdateArtist(Artist artist)
-        {
-            await ArtistDAO.Instance.Update(artist);
-        }
-
-        public async Task DeleteArtist(Artist artist)
-        {
-            await ArtistDAO.Instance.Delete(artist.Id);
+            if (artist == null || !artist.Any())
+            {
+                return new Dictionary<Guid, int>();
+            }
+            var artistPopularity = artist.ToDictionary(
+                                     a => a.Id, // Key: ArtistId (kiểu Guid)
+                                    a => a.Tracks.Sum(track => track.Listener)); // Value: Tổng số listener của tất cả các track
+            return artistPopularity;
         }
         public async Task<IEnumerable<Track>> GetAllTrackByArtistId(Guid artistId)
         {
-           return await ArtistDAO.Instance.GetAllTrackByArtistId(artistId);
+           var artist = await _context.Artists
+                                       .Include(a => a.Tracks) // Sử dụng Include để nạp track liên quan
+                                       .AsNoTracking()         // Không tracking để tối ưu hiệu suất
+                                       .FirstOrDefaultAsync(a => a.Id == artistId);
+            return artist?.Tracks ?? new List<Track>();
+        }
+        private async Task<IEnumerable<Artist>> GetUnheardArtists(List<Guid> userHistory)
+        {
+            var artist = await _context.Artists.Where(a => !userHistory.Contains(a.Id)).AsNoTracking().ToListAsync();
+            return artist;
         }
         public async Task<IEnumerable<Artist>> SuggestArtists(List<Guid> userHistory)
         {
-            return await ArtistDAO.Instance.SuggestArtists(userHistory);
+            var unheardArtist = await GetUnheardArtists(userHistory);
+            var artistPopularity = await ArtistPopularity();
+            var sortedArtists = unheardArtist.OrderByDescending(a => artistPopularity.ContainsKey(a.Id) ? artistPopularity[a.Id] : 0);
+
+            return sortedArtists.Take(10).ToList();
+
         }
 
     }

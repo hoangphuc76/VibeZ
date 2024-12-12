@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessObjects;
 using VibeZDTO;
+using Repositories.UnitOfWork;
 
 namespace VibeZOData.Controllers
 {
@@ -13,12 +14,12 @@ namespace VibeZOData.Controllers
     [ApiController]
     public class PackageController : ControllerBase
     {
-        private readonly IPackageRepository _packageRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<PackageController> _logger; // Khai báo logger
 
-        public PackageController(IPackageRepository packageRepository, ILogger<PackageController> logger)
+        public PackageController(IUnitOfWork unitOfWork, ILogger<PackageController> logger)
         {
-            _packageRepository = packageRepository;
+            _unitOfWork = unitOfWork;
             _logger = logger; // Khởi tạo logger
         }
 
@@ -26,7 +27,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<PackageDTO>>> GetAllPackages()
         {
             _logger.LogInformation("Getting all packages."); // Ghi log thông tin
-            var packages = await _packageRepository.GetAllPackages();
+            var packages = await _unitOfWork.Packages.GetAll();
             return Ok(packages);
         }
 
@@ -34,7 +35,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<Package>> GetPackageById(Guid id)
         {
             _logger.LogInformation($"Getting package with ID {id}."); // Ghi log thông tin
-            var package = await _packageRepository.GetPackageById(id);
+            var package = await _unitOfWork.Packages.GetById(id);
             if (package == null)
             {
                 _logger.LogWarning($"No package found with ID {id}."); // Ghi log cảnh báo
@@ -60,7 +61,9 @@ namespace VibeZOData.Controllers
                 Number_of_acc = numberOfAcc,
                 Description = description
             };
-            await _packageRepository.AddPackage(pc);
+            await _unitOfWork.Packages.Add(pc);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation("Package created successfully."); // Ghi log thông tin
             return Ok(new { message = "Package created successfully" });
         }
@@ -74,7 +77,7 @@ namespace VibeZOData.Controllers
                 return BadRequest(ModelState);
             }
 
-            var package = await _packageRepository.GetPackageById(id);
+            var package = await _unitOfWork.Packages.GetById(id);
             if (package == null)
             {
                 _logger.LogWarning($"No package found with ID {id} for update."); // Ghi log cảnh báo
@@ -82,7 +85,8 @@ namespace VibeZOData.Controllers
             }
 
             updatedPackage.Id = id; // Đảm bảo ID không thay đổi
-            await _packageRepository.UpdatePackage(updatedPackage);
+            await _unitOfWork.Packages.Update(updatedPackage);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Package with ID {id} updated successfully."); // Ghi log thông tin
             return Ok(new { message = "Package updated successfully" });
         }
@@ -90,14 +94,15 @@ namespace VibeZOData.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeletePackage(Guid id)
         {
-            var package = await _packageRepository.GetPackageById(id);
+            var package = await _unitOfWork.Packages.GetById(id);
             if (package == null)
             {
                 _logger.LogWarning($"No package found with ID {id} for deletion."); // Ghi log cảnh báo
                 return NotFound($"No package found with ID {id}");
             }
 
-            await _packageRepository.DeletePackage(id);
+            await _unitOfWork.Packages.Delete(package);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Package with ID {id} deleted successfully."); // Ghi log thông tin
             return Ok(new { message = "Package deleted successfully" });
         }

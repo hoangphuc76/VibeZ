@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface ILibrary_PlaylistRepository
+    public interface ILibrary_PlaylistRepository : IRepository<Library_Playlist>
     {
-        Task<IEnumerable<Library_Playlist>> GetAllLibrariePlaylists();
         Task<Library_Playlist> GetLibraryPlaylistById(Guid libraryId, Guid trackId);
-        Task Add(Library_Playlist library_Playlist);
-        Task Update(Library_Playlist library_Playlist);
-        Task Delete(Guid libraryId, Guid playlistId);
+
     }
 }

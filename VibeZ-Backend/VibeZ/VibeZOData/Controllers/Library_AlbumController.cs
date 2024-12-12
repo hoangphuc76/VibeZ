@@ -1,6 +1,7 @@
 ﻿using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
+using Repositories.UnitOfWork;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,7 +9,7 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Library_AlbumController(ILibrary_AlbumRepository _library_AlbumRepository, ILogger<Library_AlbumController> _logger) : ControllerBase
+    public class Library_AlbumController(IUnitOfWork _unitOfWork, ILogger<Library_AlbumController> _logger) : ControllerBase
     {
         // POST api/Library_Album/Create
         [HttpPost]
@@ -27,7 +28,9 @@ namespace VibeZOData.Controllers
                 AlbumId = albumId,
             };
 
-            await _library_AlbumRepository.Add(libraryAlbum);
+            await _unitOfWork.LibraryAlbums.Add(libraryAlbum);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Album relationship created between LibraryId {libId} and AlbumId {albumId}");
             return Ok();
         }
@@ -38,7 +41,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating Library_Album relationship for LibraryId: {libId} and AlbumId: {albumId}");
 
-            var existingLibAlbum = await _library_AlbumRepository.GetLibraryAlbumById(albumId, libId);
+            var existingLibAlbum = await _unitOfWork.LibraryAlbums.GetLibraryAlbumById(albumId, libId);
             if (existingLibAlbum == null)
             {
                 _logger.LogWarning($"Library_Album relationship for LibraryId {libId} and AlbumId {albumId} not found");
@@ -48,7 +51,8 @@ namespace VibeZOData.Controllers
             existingLibAlbum.LibraryId = updatedLibAlbum.LibraryId;
             existingLibAlbum.AlbumId = updatedLibAlbum.AlbumId;
 
-            await _library_AlbumRepository.Update(existingLibAlbum);
+            await _unitOfWork.LibraryAlbums.Update(existingLibAlbum);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Library_Album relationship for LibraryId {libId} and AlbumId {albumId} updated");
 
             return Ok(existingLibAlbum);
@@ -58,8 +62,14 @@ namespace VibeZOData.Controllers
         [HttpDelete("{libId}/{albumId}")]
         public async Task<ActionResult> Delete(Guid libId, Guid albumId)
         {
+            var existingLibAlbum = await _unitOfWork.LibraryAlbums.GetLibraryAlbumById(albumId, libId);
+            if (existingLibAlbum == null)
+            {
+                _logger.LogWarning($"Library_Album relationship for LibraryId {libId} and AlbumId {albumId} not found");
+                return NotFound();
+            }
             _logger.LogInformation($"Deleting Library_Album relationship for LibraryId: {libId} and AlbumId: {albumId}");
-            await _library_AlbumRepository.Delete(albumId,libId);
+            await _unitOfWork.LibraryAlbums.Delete(existingLibAlbum);
             _logger.LogInformation($"Library_Album relationship for LibraryId {libId} and AlbumId {albumId} deleted");
 
             return Ok();

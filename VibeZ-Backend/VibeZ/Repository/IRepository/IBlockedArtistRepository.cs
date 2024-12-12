@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface IBlockedArtistRepository
+    public interface IBlockedArtistRepository : IRepository<BlockedArtist>
     {
-        Task<IEnumerable<BlockedArtist>> GetAllBlockedArtists();
         Task<IEnumerable<BlockedArtist>> GetAllBlockedArtistsByUserId(Guid userId);
         Task<BlockedArtist> GetBlockedArtistById(Guid userId, Guid artistId);
-        Task AddBlockedArtist(BlockedArtist blockedArtist);
-        Task UpdateBlockedArtist(BlockedArtist blockedArtist);
-        Task DeleteBlockedArtist(BlockedArtist blockedArtist);
+ 
     }
 
 }

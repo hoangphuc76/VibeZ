@@ -630,11 +630,9 @@ D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\BusinessObjects.dll
-D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\DataAccess.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\Repositories.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\VibeZDTO.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\BusinessObjects.pdb
-D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\DataAccess.pdb
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\Repositories.pdb
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\VibeZDTO.pdb
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\obj\Debug\net8.0\VibeZOData.MvcApplicationPartsAssemblyInfo.cs
@@ -669,3 +667,9 @@ D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\libman.json
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\VibeZOData.staticwebassets.endpoints.json
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\Service.dll
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\bin\Debug\net8.0\Service.pdb
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\obj\Debug\net8.0\staticwebassets\msbuild.VibeZOData.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\VibeZOData\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,5 +1,5 @@
 ﻿using BusinessObjects;
-using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 using System;
 using System.Collections.Generic;
@@ -9,37 +9,27 @@ using System.Threading.Tasks;
 
 namespace Repositories.Repository
 {
-    public class BlockedArtistRepository : IBlockedArtistRepository
+    public class BlockedArtistRepository : Repository<BlockedArtist>, IBlockedArtistRepository
     {
-        public async Task<IEnumerable<BlockedArtist>> GetAllBlockedArtists()
+        private readonly VibeZDbContext _context;
+        public BlockedArtistRepository(VibeZDbContext context) : base(context)
         {
-            return await BlockedArtistDAO.Instance.GetAllArtist();
+            _context = context;
         }
         public async Task<IEnumerable<BlockedArtist>> GetAllBlockedArtistsByUserId(Guid userId)
         {
-            return await BlockedArtistDAO.Instance.GetAllBlockedArtistByUserId(userId);
+            return await _context.BlockedArtists.Where(x => x.UserId == userId).AsNoTrackingWithIdentityResolution().ToListAsync();
         }
 
 
         public async Task<BlockedArtist> GetBlockedArtistById(Guid userId, Guid artistId)
         {
-            return await BlockedArtistDAO.Instance.GetArtistById(userId, artistId);
+            var ba = await _context.BlockedArtists.AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync(b => b.ArtistId == artistId && b.UserId == userId);
+            if (ba == null) return null;
+            return ba;
         }
 
-        public async Task AddBlockedArtist(BlockedArtist blockedArtist)
-        {
-            await BlockedArtistDAO.Instance.Add(blockedArtist);
-        }
-
-        public async Task UpdateBlockedArtist(BlockedArtist blockedArtist)
-        {
-            await BlockedArtistDAO.Instance.Update(blockedArtist);
-        }
-
-        public async Task DeleteBlockedArtist(BlockedArtist blockedArtist)
-        {
-            await BlockedArtistDAO.Instance.Delete(blockedArtist);
-        }
+        
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
+using Repositories.UnitOfWork;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,7 +9,7 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Library_ArtistController(ILibrary_ArtistRepository _library_ArtistRepository, ILogger<Library_ArtistController> _logger) : ControllerBase
+    public class Library_ArtistController(IUnitOfWork _unitOfWork, ILogger<Library_ArtistController> _logger) : ControllerBase
     {
 
         [HttpGet("{libId}/{artistId}")]
@@ -16,7 +17,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Fetching Library_Artist relationship for LibraryId: {libId} and ArtistId: {artistId}");
 
-            var existingLibArtist = await _library_ArtistRepository.GetArtistById(artistId, libId);
+            var existingLibArtist = await _unitOfWork.LibraryArtists.GetArtistById(artistId, libId);
             if (existingLibArtist == null)
             {
                 _logger.LogWarning($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} not found");
@@ -43,7 +44,8 @@ namespace VibeZOData.Controllers
                 ArtistId = artistId,
             };
 
-            await _library_ArtistRepository.Add(libraryArtist);
+            await _unitOfWork.LibraryArtists.Add(libraryArtist);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Library_Artist relationship created between LibraryId {libId} and ArtistId {artistId}");
             return Ok();
         }
@@ -54,7 +56,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating Library_Artist relationship for LibraryId: {libId} and ArtistId: {artistId}");
 
-            var existingLibArtist = await _library_ArtistRepository.GetArtistById(artistId, libId);
+            var existingLibArtist = await _unitOfWork.LibraryArtists.GetArtistById(artistId, libId);
             if (existingLibArtist == null)
             {
                 _logger.LogWarning($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} not found");
@@ -64,7 +66,9 @@ namespace VibeZOData.Controllers
             existingLibArtist.LibraryId = updatedLibArtist.LibraryId;
             existingLibArtist.ArtistId = updatedLibArtist.ArtistId;
 
-            await _library_ArtistRepository.Update(existingLibArtist);
+            await _unitOfWork.LibraryArtists.Update(existingLibArtist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} updated");
 
             return Ok(existingLibArtist);
@@ -76,14 +80,16 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting Library_Artist relationship for LibraryId: {libId} and ArtistId: {artistId}");
 
-            var existingLibArtist = await _library_ArtistRepository.GetArtistById(artistId, libId);
+            var existingLibArtist = await _unitOfWork.LibraryArtists.GetArtistById(artistId, libId);
             if (existingLibArtist == null)
             {
                 _logger.LogWarning($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} not found");
                 return NotFound();
             }
 
-            await _library_ArtistRepository.Delete(artistId, libId);
+            await _unitOfWork.LibraryArtists.Delete(existingLibArtist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} deleted");
 
             return Ok();

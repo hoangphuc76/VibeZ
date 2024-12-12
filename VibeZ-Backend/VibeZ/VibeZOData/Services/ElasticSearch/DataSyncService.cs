@@ -1,44 +1,33 @@
 ﻿using Repositories.IRepository;
+using Repositories.UnitOfWork;
 using VibeZDTO;
 using VibeZOData.Services.ElasticSearch;
 
 public class DataSyncService
 {
-    private readonly IPlaylistRepository _playlistRepository;
-    private readonly ITrackRepository _trackRepository;
-    private readonly IAlbumRepository _albumRepository;
-    private readonly IArtistRepository _artistRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IElasticSearchService<PlaylistDTO> _playlistElasticService;
     private readonly IElasticSearchService<TrackDTO> _trackElasticService;
     private readonly IElasticSearchService<AlbumDTO> _albumElasticService;
     private readonly IElasticSearchService<ArtistDTO> _artistElasticService;
 
     public DataSyncService(
-        IPlaylistRepository playlistRepository,
-        ITrackRepository trackRepository,
-        IAlbumRepository albumRepository,
-        IArtistRepository artistRepository,
+        IUnitOfWork unitOfWork,
         IElasticSearchService<PlaylistDTO> playlistElasticService,
         IElasticSearchService<TrackDTO> trackElasticService,
         IElasticSearchService<AlbumDTO> albumElasticService,
         IElasticSearchService<ArtistDTO> artistElasticService)
     {
-        _playlistRepository = playlistRepository;
-        _trackRepository = trackRepository;
-        _albumRepository = albumRepository;
-        _artistRepository = artistRepository;
-        _playlistElasticService = playlistElasticService;
-        _trackElasticService = trackElasticService;
-        _albumElasticService = albumElasticService;
-        _artistElasticService = artistElasticService;
+
+        _unitOfWork = unitOfWork;
     }
 
     public async Task SyncDataToElasticsearch()
     {
-        var playlists = await _playlistRepository.GetAllPlaylists();
-        var tracks = await _trackRepository.GetAllTracks();
-        var albums = await _albumRepository.GetAllAlbums();
-        var artists = await _artistRepository.GetAllArtists();
+        var playlists = await _unitOfWork.Playlists.GetAll();
+        var tracks = await  _unitOfWork.Tracks.GetAll();
+        var albums = await _unitOfWork.Albums.GetAll();
+        var artists = await _unitOfWork.Artists.GetAll();
 
         foreach (var playlist in playlists)
         {

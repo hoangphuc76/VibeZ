@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessObjects;
+using Repositories.UnitOfWork;
 
 namespace VibeZOData.Controllers
 {
@@ -12,12 +13,12 @@ namespace VibeZOData.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private readonly IPaymentRepository _paymentRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<PaymentController> _logger; // Thêm ILogger vào controller
 
-        public PaymentController(IPaymentRepository paymentRepository, ILogger<PaymentController> logger)
+        public PaymentController(IUnitOfWork unitOfWork, ILogger<PaymentController> logger)
         {
-            _paymentRepository = paymentRepository;
+            _unitOfWork = unitOfWork;
             _logger = logger; // Khởi tạo logger
         }
 
@@ -25,7 +26,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<Payment>>> GetAllPayments()
         {
             _logger.LogInformation("Fetching all payments."); // Log thông tin
-            var payments = await _paymentRepository.GetAllPayments();
+            var payments = await _unitOfWork.Payments.GetAll();
             return Ok(payments);
         }
 
@@ -33,7 +34,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<Payment>> GetPaymentById(Guid id)
         {
             _logger.LogInformation($"Fetching payment with ID: {id}"); // Log thông tin
-            var payment = await _paymentRepository.GetPaymentById(id);
+            var payment = await _unitOfWork.Payments.GetById(id);
             if (payment == null)
             {
                 _logger.LogWarning($"No payment found with ID: {id}"); // Log cảnh báo
@@ -52,7 +53,8 @@ namespace VibeZOData.Controllers
             }
 
             payment.Id = Guid.NewGuid(); // Tạo ID cho thanh toán mới
-            await _paymentRepository.AddPayment(payment);
+            await _unitOfWork.Payments.Add(payment);
+            await _unitOfWork.Complete(); // Lưu thay đổi vào database
             _logger.LogInformation($"Payment created successfully with ID: {payment.Id}"); // Log thông tin
             return Ok(new { message = "Payment created successfully" });
         }
@@ -66,7 +68,7 @@ namespace VibeZOData.Controllers
                 return BadRequest(ModelState);
             }
 
-            var payment = await _paymentRepository.GetPaymentById(id);
+            var payment = await _unitOfWork.Payments.GetById(id);
             if (payment == null)
             {
                 _logger.LogWarning($"No payment found with ID: {id}"); // Log cảnh báo
@@ -74,7 +76,8 @@ namespace VibeZOData.Controllers
             }
 
             updatedPayment.Id = id; // Đảm bảo ID không thay đổi
-            await _paymentRepository.UpdatePayment(updatedPayment);
+            await _unitOfWork.Payments.Update(payment);
+            await _unitOfWork.Complete(); // Lưu thay đổi vào database
             _logger.LogInformation($"Payment with ID: {id} updated successfully."); // Log thông tin
             return Ok(new { message = "Payment updated successfully" });
         }
@@ -82,14 +85,15 @@ namespace VibeZOData.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeletePayment(Guid id)
         {
-            var payment = await _paymentRepository.GetPaymentById(id);
+            var payment = await _unitOfWork.Payments.GetById(id);
             if (payment == null)
             {
                 _logger.LogWarning($"No payment found with ID: {id}"); // Log cảnh báo
                 return NotFound($"No payment found with ID {id}");
             }
 
-            await _paymentRepository.DeletePayment(id);
+            await _unitOfWork.Payments.Delete(payment);
+            await _unitOfWork.Complete(); // Lưu thay đổi vào database
             _logger.LogInformation($"Payment with ID: {id} deleted successfully."); // Log thông tin
             return Ok(new { message = "Payment deleted successfully" });
         }

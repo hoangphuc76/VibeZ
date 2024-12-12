@@ -1,46 +1,47 @@
 ﻿using BusinessObjects;
-using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 
 namespace Repositories.Repository
 {
-    public class LibraryRepository : ILibraryRepository
+    public class LibraryRepository : Repository<Library>, ILibraryRepository
     {
-        public async Task<IEnumerable<Library>> GetAllLibraries()
+        private readonly VibeZDbContext _context;
+        public LibraryRepository(VibeZDbContext context) : base(context)
         {
-            return await LibraryDAO.Instance.GetAllLibraries();
+            _context = context;
         }
 
-        public async Task<Library> GetLibraryById(Guid libraryId)
-        {
-            return await LibraryDAO.Instance.GetLibraryById(libraryId);
-        }
-
-        public async Task AddLibrary(Library library)
-        {
-            await LibraryDAO.Instance.Add(library);
-        }
-
-        public async Task UpdateLibrary(Library library)
-        {
-            await LibraryDAO.Instance.Update(library);
-        }
-
-        public async Task DeleteLibrary(Guid libraryId)
-        {
-            await LibraryDAO.Instance.Delete(libraryId);
-        }
         public async Task<IEnumerable<Playlist>> GetPlaylistsByLibraryId(Guid libraryId)
         {
-             return await LibraryDAO.Instance.GetPlaylistsByLibraryId(libraryId);
+            // Lấy Library cùng với liên kết Playlist trong một truy vấn
+            var library = await _context.Libraries
+                                        .Include(l => l.Library_Playlists)
+                                        .ThenInclude(lp => lp.Playlist)
+                                        .AsNoTracking()
+                                        .FirstOrDefaultAsync(l => l.Id == libraryId);
+
+            return library?.Library_Playlists.Select(lp => lp.Playlist) ?? new List<Playlist>();
         }
         public async Task<IEnumerable<Artist>> GetArtistByLibraryId(Guid libraryId)
         {
-            return await LibraryDAO.Instance.GetArtistByLibraryId(libraryId);
+            var library = await _context.Libraries
+                                       .Include(l => l.Library_Artist)
+                                       .ThenInclude(la => la.Artist)
+                                       .AsNoTracking()
+                                       .FirstOrDefaultAsync(l => l.Id == libraryId);
+
+            return library?.Library_Artist.Select(la => la.Artist) ?? new List<Artist>();
         }
         public async Task<IEnumerable<Album>> GetAlbumsByLibraryId(Guid libraryId)
         {
-            return await LibraryDAO.Instance.GetAlbumsByLibraryId(libraryId);
+            var library = await _context.Libraries
+                                                    .Include(l => l.Library_Albums)
+                                                    .ThenInclude(la => la.Album) // Sử dụng ThenInclude để tải album
+                                                    .AsNoTracking()
+                                                    .FirstOrDefaultAsync(l => l.Id == libraryId);
+
+            return library?.Library_Albums.Select(la => la.Album) ?? new List<Album>();
         }
     }
 }

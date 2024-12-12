@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface IPackageRepository
+    public interface IPackageRepository : IRepository<Package>
     {
-        Task<IEnumerable<Package>> GetAllPackages();
-        Task<Package> GetPackageById(Guid packageId);
-        Task AddPackage(Package package);
-        Task UpdatePackage(Package package);
-        Task DeletePackage(Guid packageId);
+
     }
 
 }

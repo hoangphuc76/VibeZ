@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NuGet.DependencyResolver;
 using Repositories.IRepository;
+using Service.IServices;
 using VibeZDTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,14 +11,14 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController(IAdminRepository adminRepository, ILogger<AdminController> _logger) : ControllerBase
+    public class AdminController(IAdminService _adminService, ILogger<AdminController> _logger) : ControllerBase
     {
         [HttpGet("artist-data")]
         public async Task<ActionResult<IEnumerable<AdminArtistDTO>>> GetAllAdminArtists()
         {
             try
             {
-                var artistData = await adminRepository.GetAdminArtists();
+                var artistData = await _adminService.GetAdminArtists();
                 if (artistData == null || !artistData.Any())
                 {
                     return NotFound("No artist data available.");
@@ -34,7 +35,7 @@ namespace VibeZOData.Controllers
         [HttpGet("total-data")]
         public async Task<ActionResult<int>> GetTotalData()
         {
-            var totalData = await adminRepository.GetTotalData();
+            var totalData = await _adminService.GetTotalData();
             if (totalData is null)
             {
                 return NotFound();
@@ -46,7 +47,7 @@ namespace VibeZOData.Controllers
         {
             try
             {
-                var adminHome = await adminRepository.GetAdminHome();
+                var adminHome = await _adminService.GetAdminHome();
                 return adminHome;
             }
             catch (Exception ex)
@@ -60,7 +61,7 @@ namespace VibeZOData.Controllers
         {
             try
             {
-                var adminBan = await adminRepository.GetAdminBan();
+                var adminBan = await _adminService.GetAdminBan();
                 return Ok(adminBan);
             }
             catch (Exception ex)
@@ -74,7 +75,7 @@ namespace VibeZOData.Controllers
         {
             try
             {
-                var adminApproval = await adminRepository.GetAdminApporval();
+                var adminApproval = await _adminService.GetAdminApproval();
                 return Ok(adminApproval);
             }
             catch (Exception ex)
@@ -88,7 +89,7 @@ namespace VibeZOData.Controllers
         {
             try
             {
-                await adminRepository.ChangeStatusApporval(trackId);
+                await _adminService.ChangeStatusApproval(trackId);
                 return Ok("Track status changed to approved successfully.");
             }
             catch (Exception ex)

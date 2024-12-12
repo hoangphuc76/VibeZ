@@ -11,22 +11,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess;
 using VibeZOData.Models;
 using NuGet.DependencyResolver;
+using Repositories.UnitOfWork;
 
 namespace VibeZOData.Controllers
 {
     [Route("odata/[controller]")]
     [ApiController]
-    public class TrackController(ITrackRepository _trackRepository, IMapper _mapper, IAzuriteService _azure, ILogger<TrackController> _logger) : ControllerBase
+    public class TrackController(IUnitOfWork _unitOfWork, IMapper _mapper, IAzuriteService _azure, ILogger<TrackController> _logger) : ControllerBase
     {
         // GET: api/<TrackController>
         [HttpGet("all", Name = "GetAllTracks")]
         public async Task<ActionResult<IEnumerable<TrackDTO>>> GetAllTracks()
         {
             _logger.LogInformation("Getting all tracks");
-            var list = await _trackRepository.GetAllTracks();
+            var list = await _unitOfWork.Tracks.GetAll();
             var listDTO = list.Select(
                 track => _mapper.Map<Track, TrackDTO>(track));
 
@@ -39,7 +39,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<TrackDTO>>> GetTrackByIds([FromBody]List<Guid> ids)
         {
             _logger.LogInformation($"Fetching tracks");
-            var track = await _trackRepository.GetTrackByIds(ids);
+            var track = await _unitOfWork.Tracks.GetTrackByIds(ids);
             if (track == null || !track.Any())
             {
                 _logger.LogWarning($"Track not found");
@@ -63,7 +63,7 @@ namespace VibeZOData.Controllers
             _logger.LogInformation("Fetching track recommendations");
 
             // Gọi tới TrackDAO để lấy danh sách gợi ý
-            var recommendedTracks = await _trackRepository.GetSongRecommendations(request.RecentlyPlayedIds, request.ClickedTrackId, request.TopN);
+            var recommendedTracks = await _unitOfWork.Tracks.GetSongRecommendations(request.RecentlyPlayedIds, request.ClickedTrackId, request.TopN);
 
             if (recommendedTracks == null || !recommendedTracks.Any())
             {
@@ -82,7 +82,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Fetching tracks by albumId {albumId}");
 
-            var track = await _trackRepository.GetAllTrackByAlbumId(albumId);
+            var track = await _unitOfWork.Tracks.GetAllTrackByAlbumId(albumId);
             var trackDTO = track.Select(
                 tck => _mapper.Map<Track, TrackDTO>(tck));
 
@@ -93,7 +93,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<TrackDTO>> GetTrackById(Guid id)
         {
             _logger.LogInformation($"Fetching track with id {id}");
-            var track = await _trackRepository.GetTrackById(id);
+            var track = await _unitOfWork.Tracks.GetById(id);
             if (track == null)
             {
                 _logger.LogWarning($"Track with id {id} not found");
@@ -160,7 +160,8 @@ namespace VibeZOData.Controllers
                 SongInfoImg = songInfo,
             };
 
-            await _trackRepository.AddTrack(track);
+            await _unitOfWork.Tracks.Add(track);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Track created with id {track.TrackId}");
 
             return CreatedAtRoute("GetTrackById", new { id = track.TrackId }, track);
@@ -200,7 +201,8 @@ namespace VibeZOData.Controllers
                 TrackLRC = trackLRC,
             };
 
-            await _trackRepository.AddTrack(track);
+            await _unitOfWork.Tracks.Add(track);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Track created with id {track.TrackId}");
 
             return CreatedAtRoute("GetTrackById", new { id = track.TrackId }, track);
@@ -217,7 +219,7 @@ namespace VibeZOData.Controllers
             var songInfo = "";
             _logger.LogInformation($"Updating track with id {id}");
 
-            var track = await _trackRepository.GetTrackById(id);
+            var track = await _unitOfWork.Tracks.GetById(id);
             if (track == null)
             {
                 _logger.LogWarning($"Track with id {id} not found for update");
@@ -255,7 +257,8 @@ namespace VibeZOData.Controllers
             track.ArtistId = artistId;
             track.TrackLRC = trackUrl;
             track.SongInfoImg = songInfo;
-            await _trackRepository.UpdateTrack(track);
+            await _unitOfWork.Tracks.Update(track);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Track with id {id} has been updated");
 
             return NoContent();
@@ -268,7 +271,7 @@ namespace VibeZOData.Controllers
             var trackUrl = "";
             var songInfo = "";
             _logger.LogInformation($"Updating track with id {id}");
-            var track = await _trackRepository.GetTrackById(id);
+            var track = await _unitOfWork.Tracks.GetById(id);
             if (track == null)
             {
                 _logger.LogWarning($"Track with id {id} not found for update");
@@ -284,7 +287,8 @@ namespace VibeZOData.Controllers
             }
             track.TrackLRC = trackUrl;
             track.SongInfoImg = songInfo;
-            await _trackRepository.UpdateTrack(track);
+            await _unitOfWork.Tracks.Update(track);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Track with id {id} has been updated");
 
             return NoContent();
@@ -296,14 +300,15 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting track with id {id}");
 
-            var track = await _trackRepository.GetTrackById(id);
+            var track = await _unitOfWork.Tracks.GetById(id);
             if (track == null)
             {
                 _logger.LogWarning($"Track with id {id} not found for deletion");
                 return NotFound("Track not found!");
             }
 
-            await _trackRepository.DeleteTrack(track);
+            await _unitOfWork.Tracks.Delete(track);
+            await _unitOfWork.Complete();
             await _azure.DeleteFileAsync(track.Path);
             await _azure.DeleteFileAsync(track.Image);
 
@@ -316,13 +321,14 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> UpdateListener(Guid id)
         {
             _logger.LogInformation($"Updating listener for track with id {id}");
-            var existTrack = await _trackRepository.GetTrackById(id);
+            var existTrack = await _unitOfWork.Tracks.GetById(id);
             if (existTrack == null)
             {
                 _logger.LogWarning($"Track with id {id} not found for listener update");
                 return NotFound("Track not found");
             }
-            await _trackRepository.UpdateListener(existTrack);
+            await _unitOfWork.Tracks.UpdateListener(existTrack);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Listener updated for track with id {id}");
 
             return NoContent();

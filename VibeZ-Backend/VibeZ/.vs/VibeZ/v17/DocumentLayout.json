@@ -1,90 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\",
+  "WorkspaceRootPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\vibezdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\businessobjects\\vibezdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\vibezdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezodata\\controllers\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\services\\email\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\services\\email\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\repository\\repository\\trackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\repository\\trackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\services\\elasticsearch\\datasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\services\\elasticsearch\\datasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\service\\iservices\\iartistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|solutionrelative:service\\iservices\\iartistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\repository\\repository\\artistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\repository\\repository\\artistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\repository\\artistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9AB5A0F-A7C4-480C-A190-36548E289D4F}|VibeZDTO\\VibeZDTO.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezdto\\artistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9AB5A0F-A7C4-480C-A190-36548E289D4F}|VibeZDTO\\VibeZDTO.csproj|solutionrelative:vibezdto\\artistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\controllers\\artistdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9AB5A0F-A7C4-480C-A190-36548E289D4F}|VibeZDTO\\VibeZDTO.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezdto\\artistpendingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9AB5A0F-A7C4-480C-A190-36548E289D4F}|VibeZDTO\\VibeZDTO.csproj|solutionrelative:vibezdto\\artistpendingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\artist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\artist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\repository\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\artistpending.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\artistpending.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\repository\\irepository\\iartistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\irepository\\iartistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezodata\\controllers\\artistpendingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistpendingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\vibezodata\\models\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\models\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109023017_uda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109023017_uda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109085053_udddd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109085053_udddd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109080203_ut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109080203_ut.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109070635_udnt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109070635_udnt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109070406_udnation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109070406_udnation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109064830_udsongname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109064830_udsongname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109051124_udsongimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109051124_udsongimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez-backend\\vibez\\businessobjects\\migrations\\20241109031806_udmanyyy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\migrations\\20241109031806_udmanyyy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\vibez\\vibez-backend\\vibez\\service\\services\\artistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|solutionrelative:service\\services\\artistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,269 +66,185 @@
       "DocumentGroups": [
         {
           "DockedWidth": 253,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VibeZDbContext.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\VibeZDbContext.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
-              "RelativeToolTip": "BusinessObjects\\VibeZDbContext.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAA1wEcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T14:36:09.535Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\appsettings.json",
+              "RelativeDocumentMoniker": "VibeZOData\\appsettings.json",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\appsettings.json",
+              "RelativeToolTip": "VibeZOData\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-12T05:47:28.144Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAcwIgAAAASAAAA",
+              "DocumentIndex": 2,
+              "Title": "VibeZDbContext.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\VibeZDbContext.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
+              "RelativeToolTip": "BusinessObjects\\VibeZDbContext.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T09:09:29.529Z",
+              "WhenOpened": "2024-12-12T05:42:44.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Program.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Program.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Program.cs",
+              "RelativeToolTip": "VibeZOData\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwDoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:28:20.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TrackRepository.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\TrackRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repository\\TrackRepository.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\TrackRepository.cs",
-              "RelativeToolTip": "Repository\\Repository\\TrackRepository.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAYwIkAAAAiAAAA",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\UserController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwGMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T09:01:18.872Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "20241109085053_udddD.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109085053_udddD.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109085053_udddD.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109085053_udddD.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109085053_udddD.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T08:50:53.254Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ArtistRepository.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repository\\ArtistRepository.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
-              "RelativeToolTip": "Repository\\Repository\\ArtistRepository.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAIA8wDYAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T08:50:18.881Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "20241109080203_uT.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109080203_uT.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109080203_uT.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109080203_uT.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109080203_uT.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T08:02:03.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "20241109070635_udNt.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109070635_udNt.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109070635_udNt.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109070635_udNt.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109070635_udNt.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T07:06:35.777Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "20241109070406_udNation.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109070406_udNation.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109070406_udNation.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109070406_udNation.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109070406_udNation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T07:04:07.227Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "20241109064830_udSongname.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109064830_udSongname.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109064830_udSongname.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109064830_udSongname.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109064830_udSongname.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T06:48:31.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "20241109051124_udSongImg.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109051124_udSongImg.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109051124_udSongImg.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109051124_udSongImg.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109051124_udSongImg.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T05:11:24.494Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "20241109031806_udManyyy.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109031806_udManyyy.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109031806_udManyyy.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109031806_udManyyy.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109031806_udManyyy.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T03:18:07.037Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Track.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Track.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Track.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Track.cs",
-              "RelativeToolTip": "BusinessObjects\\Track.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T03:01:19.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ArtistDTO.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\ArtistDTO.cs",
-              "RelativeDocumentMoniker": "VibeZDTO\\ArtistDTO.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\ArtistDTO.cs",
-              "RelativeToolTip": "VibeZDTO\\ArtistDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:50:07.705Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Artist.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Artist.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Artist.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Artist.cs",
-              "RelativeToolTip": "BusinessObjects\\Artist.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:49:43.134Z"
+              "WhenOpened": "2024-12-11T13:27:32.137Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ArtistController.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistController.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistController.cs",
-              "ViewState": "AQIAAI8AAAAAAAAAAAAqwKkAAAAUAAAA",
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Services\\Email\\NotificationService.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Services\\Email\\NotificationService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Services\\Email\\NotificationService.cs",
+              "RelativeToolTip": "VibeZOData\\Services\\Email\\NotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:46:46.564Z"
+              "WhenOpened": "2024-12-11T13:26:51.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AutoMapperProfile.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\AutoMapperProfile.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Models\\AutoMapperProfile.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\AutoMapperProfile.cs",
-              "RelativeToolTip": "VibeZOData\\Models\\AutoMapperProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAA1AAAA",
+              "DocumentIndex": 5,
+              "Title": "DataSyncService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "RelativeToolTip": "VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwB0AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:41:25.047Z"
+              "WhenOpened": "2024-12-11T13:25:10.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "20241109023017_udA.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109023017_udA.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\Migrations\\20241109023017_udA.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\Migrations\\20241109023017_udA.cs",
-              "RelativeToolTip": "BusinessObjects\\Migrations\\20241109023017_udA.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAA1wAAAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "IArtistService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\IServices\\IArtistService.cs",
+              "RelativeDocumentMoniker": "Service\\IServices\\IArtistService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\IServices\\IArtistService.cs",
+              "RelativeToolTip": "Service\\IServices\\IArtistService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:30:17.521Z"
+              "WhenOpened": "2024-12-11T13:24:56.486Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ArtistPendingDTO.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\ArtistPendingDTO.cs",
-              "RelativeDocumentMoniker": "VibeZDTO\\ArtistPendingDTO.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\ArtistPendingDTO.cs",
-              "RelativeToolTip": "VibeZDTO\\ArtistPendingDTO.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAA0wBsAAAAGAAAA",
+              "DocumentIndex": 9,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:22:44.144Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TrackController.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\TrackController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\TrackController.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\TrackController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\TrackController.cs",
-              "ViewState": "AQIAAPsAAAAAAAAAAAAAwKgAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:16:50.137Z"
+              "WhenOpened": "2024-12-11T13:24:24.442Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "ArtistPending.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\ArtistPending.cs",
-              "RelativeDocumentMoniker": "BusinessObjects\\ArtistPending.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\ArtistPending.cs",
-              "RelativeToolTip": "BusinessObjects\\ArtistPending.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBsAAAAAAAAA",
+              "Title": "ArtistController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:14:40.223Z"
+              "WhenOpened": "2024-12-11T13:24:19.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ArtistDashboardController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAwBYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:23:37.865Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "ArtistPendingController.cs",
-              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistPendingController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistPendingController.cs",
-              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\ArtistPendingController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistPendingController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowDQAAABeAAAA",
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeToolTip": "Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwB4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T02:04:34.037Z"
+              "WhenOpened": "2024-12-11T13:23:13.4Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IArtistRepository.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\IRepository\\IArtistRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IRepository\\IArtistRepository.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\IRepository\\IArtistRepository.cs",
+              "RelativeToolTip": "Repository\\IRepository\\IArtistRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:22:51.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ArtistRepository.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repository\\ArtistRepository.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
+              "RelativeToolTip": "Repository\\Repository\\ArtistRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:20:40.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ArtistService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\Services\\ArtistService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\ArtistService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\Services\\ArtistService.cs",
+              "RelativeToolTip": "Service\\Services\\ArtistService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAwFEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:18:26.353Z"
             }
           ]
         }

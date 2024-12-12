@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Repositories.IRepository;
 using Repositories.Repository;
+using Repositories.UnitOfWork;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,12 +13,12 @@ namespace VibeZOData.Controllers
     [ApiController]
     public class FollowController : ControllerBase
     {
-        private readonly IFollowRepository _followRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<FollowController> _logger;
 
-        public FollowController(IFollowRepository followRepository, ILogger<FollowController> logger)
+        public FollowController(IUnitOfWork unitOfWork, ILogger<FollowController> logger)
         {
-            _followRepository = followRepository;
+            _unitOfWork = unitOfWork;
             _logger = logger;
         }
 
@@ -26,7 +27,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<Follow>>> GetAll()
         {
             _logger.LogInformation("GetAll called to retrieve all follow relationships.");
-            var list = await _followRepository.GetAllFollows();
+            var list = await _unitOfWork.Follows.GetAll();
             _logger.LogInformation("Retrieved {Count} follow relationships.", list.Count());
             return Ok(list);
         }
@@ -36,7 +37,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<Follow>> GetFollowByIDs(Guid userId, Guid artistId)
         {
             _logger.LogInformation("GetFollowByIDs called with UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
-            var follow = await _followRepository.GetFollowById(userId, artistId);
+            var follow = await _unitOfWork.Follows.GetFollowById(userId, artistId);
             if (follow == null)
             {
                 _logger.LogWarning("Follow relationship not found for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
@@ -57,7 +58,9 @@ namespace VibeZOData.Controllers
                 ArtistId = artistId,
                 CreateDate = DateOnly.FromDateTime(DateTime.Now)
             };
-            await _followRepository.Add(fl);
+            await _unitOfWork.Follows.Add(fl);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation("Follow relationship created for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
             return CreatedAtAction(nameof(GetFollowByIDs), new { fl.UserId, fl.ArtistId }, fl);
         }
@@ -67,14 +70,16 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> Put(Guid userId, Guid artistId)
         {
             _logger.LogInformation("Unfollow called to update follow status for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
-            var existingFollow = await _followRepository.GetFollowById(userId, artistId);
+            var existingFollow = await _unitOfWork.Follows.GetFollowById(userId, artistId);
             if (existingFollow == null)
             {
                 _logger.LogWarning("Follow relationship not found for Unfollow with UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
                 return NotFound("Follow relationship not found");
             }
             existingFollow.IsFollow = false;
-            await _followRepository.Update(existingFollow);
+            await _unitOfWork.Follows.Update(existingFollow);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation("Follow relationship updated to unfollow for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
             return NoContent();
         }
@@ -84,13 +89,14 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> Delete(Guid userId, Guid artistId)
         {
             _logger.LogInformation("Delete called to remove follow relationship for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
-            var follow = await _followRepository.GetFollowById(userId, artistId);
+            var follow = await _unitOfWork.Follows.GetFollowById(userId, artistId);
             if (follow == null)
             {
                 _logger.LogWarning("Follow relationship not found for Delete with UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
                 return NotFound("Follow relationship not found");
             }
-            await _followRepository.Delete(follow);
+            await _unitOfWork.Follows.Delete(follow);
+            await _unitOfWork.Complete();
             _logger.LogInformation("Follow relationship deleted for UserId: {UserId} and ArtistId: {ArtistId}.", userId, artistId);
             return NoContent();
         }

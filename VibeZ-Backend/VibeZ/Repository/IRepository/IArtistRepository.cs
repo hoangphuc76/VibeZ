@@ -9,17 +9,12 @@ using VibeZDTO;
 
 namespace Repositories.IRepository
 {
-    public interface IArtistRepository
+    public interface IArtistRepository : IRepository<Artist>
     {
-        Task<IEnumerable<Artist>> GetAllArtists();
-        Task<Artist> GetArtistById(Guid artistId);
-        Task AddArtist(Artist artist);
-        Task UpdateArtist(Artist artist);
-        Task DeleteArtist(Artist artist);
+
         Task<IEnumerable<Track>> GetAllTrackByArtistId(Guid artistId);
         Task<IEnumerable<Artist>> SuggestArtists(List<Guid> userHistory);
         Task<int> TotalArtist();
-        Task<IEnumerable<AdminArtistDTO>> GetAdminArtists();
         Task<Artist> GetArtistByUserId(Guid userId);
     }
 }

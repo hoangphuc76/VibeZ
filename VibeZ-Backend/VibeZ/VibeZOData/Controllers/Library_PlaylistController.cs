@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
 using Repositories.Repository;
+using Repositories.UnitOfWork;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,7 +10,7 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Library_PlaylistController(ILibrary_PlaylistRepository _library_PlaylistRepository, ILogger<Library_PlaylistController> _logger) : ControllerBase
+    public class Library_PlaylistController(IUnitOfWork _unitOfWork, ILogger<Library_PlaylistController> _logger) : ControllerBase
     {
         // GET: api/<Library_PlaylistController>
 
@@ -31,7 +32,9 @@ namespace VibeZOData.Controllers
                 PlaylistId = playId,
             };
 
-            await _library_PlaylistRepository.Add(libraryPlaylist);
+            await _unitOfWork.LibraryPlaylists.Add(libraryPlaylist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Playlist relationship created between LibraryId {libId} and PlaylistId {playId}");
             return Ok();
         }
@@ -42,7 +45,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating Library_Playlist relationship for LibraryId: {libId} and PlaylistId: {playlistId}");
 
-            var existingLibPlaylist = await _library_PlaylistRepository.GetLibraryPlaylistById(libId, playlistId);
+            var existingLibPlaylist = await _unitOfWork.LibraryPlaylists.GetLibraryPlaylistById(libId, playlistId);
             if (existingLibPlaylist == null)
             {
                 _logger.LogWarning($"Library_Playlist relationship for LibraryId {libId} and PlaylistId {playlistId} not found");
@@ -52,7 +55,9 @@ namespace VibeZOData.Controllers
             existingLibPlaylist.LibraryId = updatedLibPlaylist.LibraryId;
             existingLibPlaylist.PlaylistId = updatedLibPlaylist.PlaylistId;
 
-            await _library_PlaylistRepository.Update(existingLibPlaylist);
+            await _unitOfWork.LibraryPlaylists.Update(existingLibPlaylist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Playlist relationship for LibraryId {libId} and PlaylistId {playlistId} updated");
 
             return Ok(existingLibPlaylist);
@@ -62,8 +67,16 @@ namespace VibeZOData.Controllers
         [HttpDelete("{libId}/{playlistId}")]
         public async Task<ActionResult> Delete(Guid libId, Guid playlistId)
         {
+            var existingLibPlaylist = await _unitOfWork.LibraryPlaylists.GetLibraryPlaylistById(libId, playlistId);
+            if (existingLibPlaylist == null)
+            {
+                _logger.LogWarning($"Library_Playlist relationship for LibraryId {libId} and PlaylistId {playlistId} not found");
+                return NotFound();
+            }
             _logger.LogInformation($"Deleting Library_Playlist relationship for LibraryId: {libId} and PlaylistId: {playlistId}");
-            await _library_PlaylistRepository.Delete(libId, playlistId);
+            await _unitOfWork.LibraryPlaylists.Delete(existingLibPlaylist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Library_Playlist relationship for LibraryId {libId} and PlaylistId {playlistId} deleted");
 
             return Ok();

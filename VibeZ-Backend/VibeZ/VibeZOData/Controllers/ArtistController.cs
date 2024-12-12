@@ -4,6 +4,7 @@ using Google.Apis.Util;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
 using Repositories.Repository;
+using Repositories.UnitOfWork;
 using VibeZDTO;
 using VibeZOData.Services.Blob;
 
@@ -13,13 +14,13 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistController(IArtistRepository _artistRepository, ILogger<ArtistController> _logger, IMapper _mapper, IAzuriteService _azure) : ControllerBase
+    public class ArtistController(IUnitOfWork _unitOfWork, ILogger<ArtistController> _logger, IMapper _mapper, IAzuriteService _azure) : ControllerBase
     {
         [HttpGet("all", Name = "GetAllArtist")]
         public async Task<ActionResult<IEnumerable<ArtistDTO>>> GetAllArtists()
         {
             _logger.LogInformation("Getting all artists");
-            var list = await _artistRepository.GetAllArtists();
+            var list = await _unitOfWork.Artists.GetAll();
             var listDTO = list.Select(
                 artist => _mapper.Map<Artist, ArtistDTO>(artist));
 
@@ -31,7 +32,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<ArtistDTO>> GetArtistById(Guid id)
         {
             _logger.LogInformation($"Fetching artist with id {id}");
-            var artist = await _artistRepository.GetArtistById(id);
+            var artist = await _unitOfWork.Artists.GetById(id);
             if (artist == null)
             {
                 _logger.LogWarning($"Artist with id {id} not found");
@@ -45,7 +46,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<TrackDTO>>> GetAllTracksByArtistId(Guid artistId)
         {
             _logger.LogInformation($"Fetching track with artistId {artistId}");
-            var artist = await _artistRepository.GetAllTrackByArtistId(artistId);
+            var artist = await _unitOfWork.Artists.GetAllTrackByArtistId(artistId);
             if (artist == null)
             {
                 _logger.LogWarning($"Artist with id {artistId} not found");
@@ -58,7 +59,7 @@ namespace VibeZOData.Controllers
         [HttpGet("/Artist/{userId}")]
         public async Task<ActionResult<ArtistDTO>> GetArtistByUserId(Guid userId)
         {
-            var artist = await _artistRepository.GetArtistByUserId(userId);
+            var artist = await _unitOfWork.Artists.GetArtistByUserId(userId);
             if (artist == null)
             {
                 _logger.LogWarning($"Artist with userId {userId} not found");
@@ -95,7 +96,9 @@ namespace VibeZOData.Controllers
                 Email = email,
                 UserId = userId
             };
-            await _artistRepository.AddArtist(Artist);
+            await _unitOfWork.Artists.Add(Artist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Artist created with id {Artist.Id}");
             return CreatedAtRoute("GetArtistById", new { id = Artist.Id }, Artist);
         }
@@ -119,7 +122,9 @@ namespace VibeZOData.Controllers
                 Email = email,
                 UserId = userId
             };
-            await _artistRepository.AddArtist(Artist);
+            await _unitOfWork.Artists.Add(Artist);
+            await _unitOfWork.Complete();
+
             _logger.LogInformation($"Artist created with id {Artist.Id}");
             return CreatedAtRoute("GetArtistById", new { id = Artist.Id }, Artist);
         }
@@ -127,7 +132,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<ArtistDTO>>> SuggestArtist([FromForm]List<Guid> userHistory)
         {
             _logger.LogInformation("Suggesting artists for the user.");
-            var artistSuggestions = await _artistRepository.SuggestArtists(userHistory);
+            var artistSuggestions = await _unitOfWork.Artists.SuggestArtists(userHistory);
 
             if (artistSuggestions == null || !artistSuggestions.Any())
             {
@@ -147,7 +152,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating Artist with id {id}");
 
-            var artist = await _artistRepository.GetArtistById(id);
+            var artist = await _unitOfWork.Artists.GetById(id);
             if (artist == null)
             {
                 _logger.LogWarning($"Artist with id {id} not found for update");
@@ -169,7 +174,8 @@ namespace VibeZOData.Controllers
             artist.Email = email;
             artist.UserId = userId;
 
-            await _artistRepository.UpdateArtist(artist);
+            await _unitOfWork.Artists.Update(artist);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"Artist with id {id} has been updated");
 
             return NoContent();
@@ -181,14 +187,15 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting artist with id {id}");
 
-            var artist = await _artistRepository.GetArtistById(id);
+            var artist = await _unitOfWork.Artists.GetById(id);
             if (artist == null)
             {
                 _logger.LogWarning($"Artist with id {id} not found for deletion");
                 return NotFound("Artist not found!");
             }
 
-            await _artistRepository.DeleteArtist(artist);
+            await _unitOfWork.Artists.Delete(artist);
+            await _unitOfWork.Complete();
             await _azure.DeleteFileAsync(artist.Image);
 
             _logger.LogInformation($"Artist with id {id} has been deleted");

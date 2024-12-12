@@ -3,6 +3,7 @@ using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
 using Repositories.Repository;
+using Repositories.UnitOfWork;
 using VibeZDTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,13 +12,13 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TrackPlaylistController(ITracksPlaylistRepository _trackPlaylistRepository, ILogger<TrackPlaylistController> _logger, IMapper _mapper) : ControllerBase
+    public class TrackPlaylistController(IUnitOfWork _unitOfWork, ILogger<TrackPlaylistController> _logger, IMapper _mapper) : ControllerBase
     {
         [HttpGet("all", Name = "GetAllTrackPlayList")]
         public async Task<ActionResult<IEnumerable<TrackPlayListDTO>>> GetAllTrackPlayLists()
         {
             _logger.LogInformation("Getting all trackPlayLists");
-            var list = await _trackPlaylistRepository.GetAllTracksPlaylists();
+            var list = await _unitOfWork.TrackPlaylists.GetAll();
             var listDTO = list.Select(
                 trackPlayList => _mapper.Map<Track_Playlist, TrackPlayListDTO>(trackPlayList));
 
@@ -30,7 +31,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<TrackPlayListDTO>> GetTrackPlaylistById(Guid trackId, Guid playlistId)
         {
             _logger.LogInformation($"Fetching TrackPlaylist with trackId {trackId}, playlistId {playlistId}");
-            var trackPlayList = await _trackPlaylistRepository.GetTracksPlaylistById(trackId, playlistId);
+            var trackPlayList = await _unitOfWork.TrackPlaylists.GetTracksPlaylistById(trackId, playlistId);
             if (trackPlayList == null)
             {
                 _logger.LogWarning($"TrackPlaylist with trackId {trackId}, playlistId {playlistId} not found");
@@ -57,47 +58,27 @@ namespace VibeZOData.Controllers
                 TrackId = trackId,
             };
 
-            await _trackPlaylistRepository.AddTracksPlaylist(playlist_track);
+            await _unitOfWork.TrackPlaylists.Add(playlist_track);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"playlist_track relationship created between playlistId {playlistId} and trackId {trackId}");
             return Ok();
         }
 
-        //// PUT api/Library_Artist/{libId}/{artistId}
-        //[HttpPut("{playlistId}/{trackId}")]
-        //public async Task<ActionResult> Put(Guid playlistId, Guid trackId, [FromBody] Track_Playlist track_Playlist)
-        //{
-        //    _logger.LogInformation($"Updating Library_Artist relationship for LibraryId: {libId} and ArtistId: {artistId}");
-
-        //    var existingLibArtist = await _library_ArtistRepository.GetArtistById(artistId, libId);
-        //    if (existingLibArtist == null)
-        //    {
-        //        _logger.LogWarning($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} not found");
-        //        return NotFound();
-        //    }
-
-        //    existingLibArtist.LibraryId = updatedLibArtist.LibraryId;
-        //    existingLibArtist.ArtistId = updatedLibArtist.ArtistId;
-
-        //    await _library_ArtistRepository.Update(existingLibArtist);
-        //    _logger.LogInformation($"Library_Artist relationship for LibraryId {libId} and ArtistId {artistId} updated");
-
-        //    return Ok(existingLibArtist);
-        //}
-
-        // DELETE api/Library_Artist/{libId}/{artistId}
+     
         [HttpDelete("{playlistId}/{trackId}")]
         public async Task<ActionResult> Delete(Guid playlistId, Guid trackId)
         {
             _logger.LogInformation($"Deleting track_playlist relationship for trackId: {trackId} and playlistId: {playlistId}");
 
-            var track_Playlist = await _trackPlaylistRepository.GetTracksPlaylistById(trackId, playlistId);
+            var track_Playlist = await _unitOfWork.TrackPlaylists.GetTracksPlaylistById(trackId, playlistId);
             if (track_Playlist == null)
             {
                 _logger.LogWarning($"track_playlist relationship for playlistId {playlistId} and trackId {trackId} not found");
                 return NotFound();
             }
 
-            await _trackPlaylistRepository.DeleteTracksPlaylist(track_Playlist);
+            await _unitOfWork.TrackPlaylists.Delete(track_Playlist);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"track_playlist relationship for playlistId {playlistId} and trackId {trackId} deleted");
 
             return Ok();

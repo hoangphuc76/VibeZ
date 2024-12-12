@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Repositories.IRepository;
+using Repositories.UnitOfWork;
+using Repositories.UnitOfWork.Repositories.UnitOfWork;
+using Service.IServices;
 using System.Security.Claims;
 using static System.Collections.Specialized.BitVector32;
 
@@ -12,13 +15,15 @@ namespace VibeZOData.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userService;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<UserController> _logger;
 
         // Constructor
-        public UserController(IUserRepository userRepository, ILogger<UserController> logger)
+        public UserController(IUserService userService, IUnitOfWork unitOfWork, ILogger<UserController> logger)
         {
-            _userRepository = userRepository;
+            _userService = userService;
+            _unitOfWork = unitOfWork;
             _logger = logger;
         }
 
@@ -27,7 +32,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetAll()
         {
             _logger.LogInformation("Fetching all users...");
-            var users = await _userRepository.GetAllUsers();
+            var users = await _unitOfWork.Users.GetAll();
 
             if (users == null || !users.Any())
             {
@@ -44,7 +49,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<User>> GetUserByID(Guid id)
         {
             _logger.LogInformation($"Fetching user with ID: {id}");
-            var user = await _userRepository.GetUserById(id);
+            var user = await _unitOfWork.Users.GetById(id);
 
             if (user == null)
             {
@@ -81,7 +86,7 @@ namespace VibeZOData.Controllers
                 DOB = dob
             };
             _logger.LogInformation("Adding new user...");
-            await _userRepository.AddUser(user);
+            await _userService.AddUser(user);
 
             _logger.LogInformation("User added successfully.");
             return CreatedAtAction(nameof(GetUserByID), new { id = user.Id }, user);
@@ -92,7 +97,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> Put(Guid id, string? name, string email, string password, string gender, string username, int yy, int mm, int dd)
         {
 
-            var existingUser = await _userRepository.GetUserById(id);
+            var existingUser = await _unitOfWork.Users.GetById(id);
             if (existingUser == null)
             {
                 _logger.LogWarning($"User with ID {id} not found.");
@@ -113,7 +118,8 @@ namespace VibeZOData.Controllers
             existingUser.UserName = username;
             existingUser.DOB = dob;
             existingUser.UpdateDate = DateOnly.FromDateTime(DateTime.UtcNow);
-            await _userRepository.UpdateUser(existingUser);
+            await _unitOfWork.Users.Update(existingUser);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation($"User with ID {id} updated successfully.");
             return Ok("Updated successfully.");
@@ -123,13 +129,14 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> UdPremium(Guid id, string premium)
         {
 
-            var existingUser = await _userRepository.GetUserById(id);
+            var existingUser = await _unitOfWork.Users.GetById(id);
 
 
             existingUser.Premium = premium;
            
             existingUser.UpdateDate = DateOnly.FromDateTime(DateTime.UtcNow);
-            await _userRepository.UpdateUser(existingUser);
+            await _unitOfWork.Users.Update(existingUser);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation($"User with ID {id} updated successfully.");
             return Ok("Updated successfully.");
@@ -138,13 +145,14 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult> UdRoleArtist(Guid id)
         {
 
-            var existingUser = await _userRepository.GetUserById(id);
+            var existingUser = await _unitOfWork.Users.GetById(id);
 
 
             existingUser.Role = "Artist";
 
             existingUser.UpdateDate = DateOnly.FromDateTime(DateTime.UtcNow);
-            await _userRepository.UpdateUser(existingUser);
+            await _unitOfWork.Users.Update(existingUser);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation($"User with ID {id} updated successfully.");
             return Ok("Updated successfully.");
@@ -155,14 +163,15 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting user with ID: {id}");
 
-            var existingUser = await _userRepository.GetUserById(id);
+            var existingUser = await _unitOfWork.Users.GetById(id);
             if (existingUser == null)
             {
                 _logger.LogWarning($"User with ID {id} not found.");
                 return NotFound($"User with ID {id} not found.");
             }
 
-            await _userRepository.DeleteUser(id);
+            await _unitOfWork.Users.Delete(existingUser);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"User with ID {id} deleted successfully.");
 
             return Ok("Deleted successfully.");

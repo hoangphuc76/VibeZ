@@ -2,6 +2,8 @@
 using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
+using Repositories.UnitOfWork;
+using Service.IServices;
 using System.Drawing;
 using System.IO;
 using VibeZDTO;
@@ -13,7 +15,7 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistPendingController(IArtistPendingRepository _artistPendingRepository, ILogger<ArtistPendingController> _logger, IMapper _mapper, IAzuriteService _azuriteService) : ControllerBase
+    public class ArtistPendingController(IUnitOfWork _unitOfWork, ILogger<ArtistPendingController> _logger, IMapper _mapper, IAzuriteService _azuriteService) : ControllerBase
     {
         // GET: api/ArtistPending
         [HttpGet]
@@ -21,7 +23,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation("Fetching all ArtistPending records.");
 
-            var artists = await _artistPendingRepository.GetAll();
+            var artists = await _unitOfWork.ArtistPending.GetAll();
             var artistDTOs = artists.Select(artist => _mapper.Map<ArtistPending, ArtistPendingDTO>(artist));
 
             _logger.LogInformation("Fetched {Count} records.", artistDTOs.Count());
@@ -35,7 +37,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation("Fetching ArtistPending record with ID: {Id}", id);
 
-            var artist = await _artistPendingRepository.GetById(id);
+            var artist = await _unitOfWork.ArtistPending.GetById(id);
             if (artist == null)
             {
                 _logger.LogWarning("ArtistPending record with ID: {Id} not found.", id);
@@ -95,8 +97,8 @@ namespace VibeZOData.Controllers
                 CreateDate = DateOnly.FromDateTime(DateTime.Now)
 
             };
-            await _artistPendingRepository.Add(artistPending);
-
+            await _unitOfWork.ArtistPending.Add(artistPending);
+            await _unitOfWork.Complete();
             _logger.LogInformation("Added new ArtistPending record with ID: {Id}", artistPending.Id);
 
             return CreatedAtAction(nameof(GetById), new { id = artistPending.Id }, artistPending);
@@ -109,7 +111,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation("Updating ArtistPending record with ID: {Id}", id);
 
-            var artistPendingDTO = await _artistPendingRepository.GetById(id);
+            var artistPendingDTO = await _unitOfWork.ArtistPending.GetById(id);
             if (artistPendingDTO == null)
             {
                 _logger.LogWarning("ArtistPending ID mismatch.");
@@ -141,8 +143,8 @@ namespace VibeZOData.Controllers
             artistPendingDTO.LyricLRC = lyricLRcUrl;
             artistPendingDTO.SongImg = songImgUrl;
             artistPendingDTO.UpdateDate = DateOnly.FromDateTime(DateTime.Now);
-             await _artistPendingRepository.Update(artistPendingDTO);
-
+             await _unitOfWork.ArtistPending.Update(artistPendingDTO);
+            await _unitOfWork.Complete();
             _logger.LogInformation("Updated ArtistPending record with ID: {Id}", id);
 
             return NoContent();
@@ -154,14 +156,15 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation("Deleting ArtistPending record with ID: {Id}", id);
 
-            var artist = await _artistPendingRepository.GetById(id);
+            var artist = await _unitOfWork.ArtistPending.GetById(id);
             if (artist == null)
             {
                 _logger.LogWarning("ArtistPending record with ID: {Id} not found.", id);
                 return NotFound();
             }
 
-            await _artistPendingRepository.Delete(artist);
+            await _unitOfWork.ArtistPending.Delete(artist);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation("Deleted ArtistPending record with ID: {Id}", id);
 

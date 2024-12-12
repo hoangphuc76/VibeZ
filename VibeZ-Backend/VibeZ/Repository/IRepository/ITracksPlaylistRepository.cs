@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface ITracksPlaylistRepository
+    public interface ITracksPlaylistRepository  : IRepository<Track_Playlist>
     {
-        Task<IEnumerable<Track_Playlist>> GetAllTracksPlaylists();
         Task<Track_Playlist> GetTracksPlaylistById(Guid trackPlaylistId, Guid playlistId);
-        Task AddTracksPlaylist(Track_Playlist TracksPlaylist);
         Task<int> GetTotalSavedTrack(Guid artistId, DateOnly startDate, DateOnly endDate);
-        Task UpdateTracksPlaylist(Track_Playlist TracksPlaylist);
-        Task DeleteTracksPlaylist(Track_Playlist TracksPlaylist);
     }
 }

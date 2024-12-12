@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface IPaymentRepository
+    public interface IPaymentRepository : IRepository<Payment>
     {
-        Task<IEnumerable<Payment>> GetAllPayments();
-        Task<Payment> GetPaymentById(Guid paymentId);
-        Task AddPayment(Payment payment);
-        Task UpdatePayment(Payment payment);
-        Task DeletePayment(Guid paymentId);
+
     }
 
 }

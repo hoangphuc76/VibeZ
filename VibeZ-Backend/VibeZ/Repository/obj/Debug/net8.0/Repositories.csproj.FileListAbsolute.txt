@@ -60,9 +60,7 @@ D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\Repositories.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\Repositories.pdb
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\BusinessObjects.dll
-D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\DataAccess.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\BusinessObjects.pdb
-D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\bin\Debug\net8.0\DataAccess.pdb
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\obj\Debug\net8.0\Reposito.787EC4B2.Up2Date
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\obj\Debug\net8.0\Repositories.dll
 D:\FptUniversity\ChuyenNganh5\SWP\VibeZ-Backend\VibeZ\Repository\obj\Debug\net8.0\refint\Repositories.dll

@@ -1,101 +1,234 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\VibeZ-Backend\\VibeZ\\",
+  "WorkspaceRootPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\vibez-backend\\vibez\\vibezodata\\models\\edmmodelbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\models\\edmmodelbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\vibez-backend\\vibez\\vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\vibez-backend\\vibez\\vibezodata\\controllers\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\vibez-backend\\vibez\\vibezodata\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\vibez-backend\\vibez\\vibezodata\\models\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\models\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\businessobjects\\vibezdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CFB12A6-394C-4D54-B1E5-752B70541A74}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\vibezdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\services\\email\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\services\\email\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\services\\elasticsearch\\datasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\services\\elasticsearch\\datasyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\service\\iservices\\iartistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|solutionrelative:service\\iservices\\iartistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\repository\\repository\\artistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\repository\\artistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\controllers\\artistdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E5A69B3-9B3E-4631-AE6B-2498F6815B09}|VibeZOData\\VibeZOData.csproj|solutionrelative:vibezodata\\controllers\\artistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\repository\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\unitofwork\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\repository\\irepository\\iartistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94A91F21-C5E9-44F5-B8A9-527F9D8A0337}|Repository\\Repositories.csproj|solutionrelative:repository\\irepository\\iartistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|d:\\fptuniversity\\chuyennganh5\\swp\\githubswp\\vibez\\service\\services\\artistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48CF7423-F062-431E-A6A4-44C1472D3778}|Service\\Service.csproj|solutionrelative:service\\services\\artistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 216,
       "DocumentGroups": [
         {
           "DockedWidth": 253,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EdmModelBuilder.cs",
-              "DocumentMoniker": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\EdmModelBuilder.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Models\\EdmModelBuilder.cs",
-              "ToolTip": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\EdmModelBuilder.cs",
-              "RelativeToolTip": "VibeZOData\\Models\\EdmModelBuilder.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwDAAAAA6AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "VibeZDbContext.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\VibeZDbContext.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\BusinessObjects\\VibeZDbContext.cs",
+              "RelativeToolTip": "BusinessObjects\\VibeZDbContext.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T03:24:24.873Z",
+              "WhenOpened": "2024-12-12T05:42:44.141Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AutoMapperProfile.cs",
-              "DocumentMoniker": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\AutoMapperProfile.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Models\\AutoMapperProfile.cs",
-              "ToolTip": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Models\\AutoMapperProfile.cs",
-              "RelativeToolTip": "VibeZOData\\Models\\AutoMapperProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Program.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Program.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Program.cs",
+              "RelativeToolTip": "VibeZOData\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAUwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T03:16:30.003Z",
+              "WhenOpened": "2024-12-11T13:28:20.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FollowController.cs",
-              "DocumentMoniker": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\FollowController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\FollowController.cs",
-              "ToolTip": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\FollowController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\FollowController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAgwAoAAAATAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\UserController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwGMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T03:14:39.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T13:27:32.137Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Program.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Program.cs",
-              "ToolTip": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Program.cs",
-              "RelativeToolTip": "VibeZOData\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAIwBoAAAAzAAAAAAAAAA==",
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Services\\Email\\NotificationService.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Services\\Email\\NotificationService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Services\\Email\\NotificationService.cs",
+              "RelativeToolTip": "VibeZOData\\Services\\Email\\NotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T03:11:11.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T13:26:51.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\VibeZ-Backend\\VibeZ\\VibeZOData\\Controllers\\UserController.cs",
-              "RelativeToolTip": "VibeZOData\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "DataSyncService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "RelativeToolTip": "VibeZOData\\Services\\ElasticSearch\\DataSyncService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwB0AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T03:01:51.419Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T13:25:10.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IArtistService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Service\\IServices\\IArtistService.cs",
+              "RelativeDocumentMoniker": "Service\\IServices\\IArtistService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Service\\IServices\\IArtistService.cs",
+              "RelativeToolTip": "Service\\IServices\\IArtistService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:24:56.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:24:24.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ArtistController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\ArtistController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:24:19.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ArtistDashboardController.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "RelativeDocumentMoniker": "VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "RelativeToolTip": "VibeZOData\\Controllers\\ArtistDashboardController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAwBYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:23:37.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeToolTip": "Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwB4AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:23:13.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IArtistRepository.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\IRepository\\IArtistRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IRepository\\IArtistRepository.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\IRepository\\IArtistRepository.cs",
+              "RelativeToolTip": "Repository\\IRepository\\IArtistRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:22:51.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ArtistRepository.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repository\\ArtistRepository.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Repository\\Repository\\ArtistRepository.cs",
+              "RelativeToolTip": "Repository\\Repository\\ArtistRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:20:40.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ArtistService.cs",
+              "DocumentMoniker": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Service\\Services\\ArtistService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\ArtistService.cs",
+              "ToolTip": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\GitHubSwp\\VibeZ\\Service\\Services\\ArtistService.cs",
+              "RelativeToolTip": "Service\\Services\\ArtistService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAwFEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T13:18:26.353Z"
             }
           ]
         }

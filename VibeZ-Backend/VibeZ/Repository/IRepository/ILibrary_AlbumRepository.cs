@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface ILibrary_AlbumRepository
+    public interface ILibrary_AlbumRepository : IRepository<Library_Album>
     {
-        Task<IEnumerable<Library_Album>> GetAllLibrarieAlbums();
         Task<Library_Album> GetLibraryAlbumById(Guid albumId, Guid LibraryId);
-        Task Add(Library_Album library_Album);
-        Task Update(Library_Album library_Album);
-        Task Delete(Guid albumId, Guid libraryId);
+
     }
 }

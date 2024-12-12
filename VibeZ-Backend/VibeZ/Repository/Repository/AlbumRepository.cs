@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Repositories.IRepository;
 using System;
 using System.Collections.Generic;
@@ -14,21 +13,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repositories.Repository
 {
-    public class AlbumRepository : IAlbumRepository
+    public class AlbumRepository : Repository<Album>, IAlbumRepository
     {
         private readonly VibeZDbContext _context;
-        public AlbumRepository()
+        public AlbumRepository(VibeZDbContext context) : base(context)
         {
-            _context = new VibeZDbContext();
+            _context = context;
         }
 
-        public async Task<IEnumerable<Album>> GetAllAlbums()
-        {
-            return await AlbumDAO.Instance.GetAllAlbums();
-        }
+        
         public async Task<IEnumerable<Album>> GetAllAlbumsByArtistId(Guid artistId)
         {
-            return await AlbumDAO.Instance.GetAllAlbumsByArtistId(artistId);
+            return await _context.Albums.Where(x => x.ArtistId == artistId).AsNoTrackingWithIdentityResolution().Include(x => x.Artist).ToListAsync();
         }
         public async Task<int> TotalAlbum()
         {
@@ -38,26 +34,12 @@ namespace Repositories.Repository
         {
             return await _context.Albums.CountAsync(album => album.ArtistId == artistId);
         }
-        public async Task<Album> GetAlbumById(Guid albumId)
+        public async Task<Album> GetById(Guid albumId)
         {
-            return await AlbumDAO.Instance.GetAlbumById(albumId);
+            var album = await _context.Albums.AsNoTrackingWithIdentityResolution().Include(x => x.Artist).FirstOrDefaultAsync(u => u.Id == albumId);
+            return album;
         }
 
-        public async Task AddAlbum(Album album)
-        {
-            await AlbumDAO.Instance.Add(album);
-        }
-
-        public async Task UpdateAlbum(Album album)
-        {
-            await AlbumDAO.Instance.Update(album);
-
-        }
-
-        public async Task DeleteAlbum(Album album)
-        {
-            await AlbumDAO.Instance.Delete(album);
-
-        }
+        
     }
 }

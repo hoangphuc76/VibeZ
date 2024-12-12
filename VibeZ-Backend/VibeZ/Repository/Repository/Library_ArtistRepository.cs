@@ -1,5 +1,5 @@
 ﻿using BusinessObjects;
-using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 using System;
 using System.Collections.Generic;
@@ -9,12 +9,22 @@ using System.Threading.Tasks;
 
 namespace Repositories.Repository
 {
-    public class Library_ArtistRepository : ILibrary_ArtistRepository
+    public class Library_ArtistRepository : Repository<Library_Artist>, ILibrary_ArtistRepository
+        
     {
-        public async Task<IEnumerable<Library_Artist>> GetAll() => await Library_ArtistDAO.Instance.GetAll();
-        public async Task<Library_Artist> GetArtistById(Guid artistId, Guid LibraryId) => await Library_ArtistDAO.Instance.GetArtistById(artistId, LibraryId);
-        public async Task Add(Library_Artist library_Artist) => await Library_ArtistDAO.Instance.Add(library_Artist);
-        public async Task Update(Library_Artist library_Artist) => await Library_ArtistDAO.Instance.Update(library_Artist);
-        public async Task Delete(Guid artistId, Guid libraryId) => await Library_ArtistDAO.Instance.Delete(artistId, libraryId);
+        private readonly VibeZDbContext _context;
+        public Library_ArtistRepository(VibeZDbContext context) : base(context)
+        {
+            _context = context;
+        }
+        public async Task<Library_Artist> GetArtistById(Guid artistId, Guid LibraryId)
+        {
+            var libraryArtist = await _context.Library_Artists
+                                  .AsNoTracking()  // Không tracking vì chỉ đọc dữ liệu
+                                  .FirstOrDefaultAsync(f => f.ArtistId == artistId && f.LibraryId == LibraryId);
+
+            return libraryArtist;
+        }
+
     }
 }

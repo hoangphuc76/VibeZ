@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 using System;
@@ -11,34 +10,28 @@ using System.Transactions;
 
 namespace Repositories.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
-        private readonly ILibraryRepository _libraryRepository;
         private readonly VibeZDbContext _context;
-        public UserRepository(ILibraryRepository libraryRepository)
+        public UserRepository( VibeZDbContext context) : base(context)
         {
-            _context = new VibeZDbContext();
-            _libraryRepository = libraryRepository ?? throw new ArgumentNullException(nameof(libraryRepository));
+            _context = context;
         }
 
         public async Task<int> TotalUser()
         {
             return await Task.FromResult(_context.Users.Count());
         }
-        public async Task<IEnumerable<User>> GetAllUsers()
-        {
-            return await UserDAO.Instance.GetAllUsers();
-        }
+     
 
         public async Task<User> Authenticate(string username, string password)
         {
-            return await UserDAO.Instance.Authenticate(username, password);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
+            if (user == null) return null;
+            return user;
         }
 
-        public async Task<User> GetUserById(Guid userId)
-        {
-            return await UserDAO.Instance.GetUserById(userId);
-        }
+    
 
         public async Task<Guid> GenerateUniqueUserIdAsync()
         {
@@ -47,63 +40,35 @@ namespace Repositories.Repository
             do
             {
                 userId = Guid.NewGuid();
-                exists = await UserDAO.Instance.GetUserById(userId);
+                exists = await GetById(userId);
             } while (exists != null);
             return userId;
         }
         public async Task<User> FindByEmailAsync(string email)
         {
-            return await UserDAO.Instance.FindByEmailAsync(email);
-        }
-        public async Task AddUser(User user)
-        {
-            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                try
-                {
-                    await UserDAO.Instance.Add(user);
-                    Console.WriteLine("User added: " + user.Id);
-
-                    var library = new Library
-                    {
-                        Id = Guid.NewGuid(),
-                        UserId = user.Id
-                    };
-
-                    await _libraryRepository.AddLibrary(library);
-                    Console.WriteLine("Library added: " + library.Id);
-
-                    transaction.Complete();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                    throw new Exception("An error occurred while adding the user and library.", ex);
-                }
-            }
-        }
-        public async Task AddUserGoogle(User user)
-        {
-            await UserDAO.Instance.Add(user);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null) return null;
+            return user;
         }
 
-        public async Task UpdateUser(User user)
-        {
-            await UserDAO.Instance.Update(user);
-        }
+   
 
-        public async Task DeleteUser(Guid userId)
-        {
-            await UserDAO.Instance.Delete(userId);
-        }
-
+      
         public async Task<User> FindByNameAsync(string username)
         {
-            return await UserDAO.Instance.FindByNameAsync(username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            if (user == null) return null;
+            return user;
         }
         public async Task UpdatePassword(Guid UserId, string newPassword)
         {
-            await UserDAO.Instance.UpdatePassword(UserId, newPassword);
+            var user = await GetById(UserId);
+            if (user == null)
+            {
+                throw new Exception("User not found");
+            }
+            user.Password = newPassword;
+            _context.Users.Update(user);
         }
     }
 }

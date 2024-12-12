@@ -3,6 +3,7 @@ using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
 using Repositories.Repository;
+using Repositories.UnitOfWork;
 using VibeZDTO;
 using VibeZOData.Services.Blob;
 
@@ -12,14 +13,14 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlockedBlockedArtistController(IBlockedArtistRepository _blockedArtistRepository, ILogger<BlockedBlockedArtistController> _logger, IMapper _mapper) : ControllerBase
+    public class BlockedBlockedArtistController(IUnitOfWork _unitOfWork, ILogger<BlockedBlockedArtistController> _logger, IMapper _mapper) : ControllerBase
     {
         // GET: api/<BlockedBlockedArtistController>
         [HttpGet("all", Name = "GetAllBlockedArtist")]
         public async Task<ActionResult<IEnumerable<BlockedArtistDTO>>> GetAllBlockedArtists()
         {
             _logger.LogInformation("Getting all blockedArtists");
-            var list = await _blockedArtistRepository.GetAllBlockedArtists();
+            var list = await _unitOfWork.BlockedArtists.GetAll();
             var listDTO = list.Select(
                 BlockedArtist => _mapper.Map<BlockedArtist, BlockedArtistDTO>(BlockedArtist));
 
@@ -31,7 +32,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<BlockedArtistDTO>>> GetAllBlockedArtistsByUserId(Guid id)
         {
             _logger.LogInformation("Getting all blockedArtists by userId");
-            var list = await _blockedArtistRepository.GetAllBlockedArtistsByUserId(id);
+            var list = await _unitOfWork.BlockedArtists.GetAllBlockedArtistsByUserId(id);
             var listDTO = list.Select(
                 blockedArtist => _mapper.Map<BlockedArtist, BlockedArtistDTO>(blockedArtist));
 
@@ -43,7 +44,7 @@ namespace VibeZOData.Controllers
         [HttpGet("{artistId, userId}", Name = "GetBlockedArtistById")]
         public async Task<ActionResult<BlockedArtistDTO>> GetBlockedArtistById(Guid artistId, Guid userId)
         {
-            var blockedArtist = await _blockedArtistRepository.GetBlockedArtistById(artistId, userId);
+            var blockedArtist = await _unitOfWork.BlockedArtists.GetBlockedArtistById(artistId, userId);
             if (blockedArtist == null)
             {
                 _logger.LogWarning($"blockedArtist not found");
@@ -71,7 +72,8 @@ namespace VibeZOData.Controllers
                 ArtistId = artistId,
                 blocked_date = DateTime.UtcNow
             };
-            await _blockedArtistRepository.AddBlockedArtist(blockedArtist);
+            await _unitOfWork.BlockedArtists.Add(blockedArtist);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"blockedArtist created ");
             return CreatedAtRoute("GetblockedArtistById", new { userId = blockedArtist.UserId, artistId = blockedArtist.ArtistId }, blockedArtist);
         }
@@ -81,7 +83,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating BlockedArtist with userId {userId}, artistId {artistId}");
 
-            var blockedArtist = await _blockedArtistRepository.GetBlockedArtistById(artistId, userId);
+            var blockedArtist = await _unitOfWork.BlockedArtists.GetBlockedArtistById(userId, artistId);
             if (blockedArtist == null)
             {
                 _logger.LogWarning($"BlockedArtist  with userId {userId}, artistId {artistId} not found for update");
@@ -91,7 +93,8 @@ namespace VibeZOData.Controllers
             blockedArtist.ArtistId = artistId;
             blockedArtist.UpdateDate = DateOnly.FromDateTime(DateTime.UtcNow);
 
-            await _blockedArtistRepository.UpdateBlockedArtist(blockedArtist);
+            await _unitOfWork.BlockedArtists.Update(blockedArtist);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"BlockedArtist with userId {userId}, artistId {artistId} has been updated");
 
             return NoContent();
@@ -103,14 +106,15 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting BlockedArtist  with userId {userId}, artistId {artistId}");
 
-            var blockedArtist = await _blockedArtistRepository.GetBlockedArtistById(userId, artistId);
+            var blockedArtist = await _unitOfWork.BlockedArtists.GetBlockedArtistById(userId, artistId);
             if (blockedArtist == null)
             {
                 _logger.LogWarning($"BlockedArtist  with userId {userId}, artistId {artistId} not found for deletion");
                 return NotFound("BlockedArtist not found!");
             }
 
-            await _blockedArtistRepository.DeleteBlockedArtist(blockedArtist);
+            await _unitOfWork.BlockedArtists.Delete(blockedArtist);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation($"BlockedArtist  with userId {userId}, artistId {artistId} has been deleted");
 

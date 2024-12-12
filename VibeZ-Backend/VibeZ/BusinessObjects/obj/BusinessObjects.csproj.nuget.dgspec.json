@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {}
+    "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {}
   },
   "projects": {
-    "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {
+    "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj",
+        "projectUniqueName": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj",
         "projectName": "BusinessObjects",
-        "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj",
+        "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\obj\\",
+        "outputPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

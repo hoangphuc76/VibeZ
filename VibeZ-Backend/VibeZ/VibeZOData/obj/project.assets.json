@@ -3941,25 +3941,11 @@
           "bin/placeholder/BusinessObjects.dll": {}
         }
       },
-      "DataAccess/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "BusinessObjects": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/DataAccess.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DataAccess.dll": {}
-        }
-      },
       "Repositories/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "BusinessObjects": "1.0.0",
-          "DataAccess": "1.0.0",
           "VibeZDTO": "1.0.0"
         },
         "compile": {
@@ -3967,6 +3953,21 @@
         },
         "runtime": {
           "bin/placeholder/Repositories.dll": {}
+        }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BusinessObjects": "1.0.0",
+          "Repositories": "1.0.0",
+          "VibeZDTO": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
         }
       },
       "VibeZDTO/1.0.0": {
@@ -10342,15 +10343,15 @@
       "path": "../BusinessObjects/BusinessObjects.csproj",
       "msbuildProject": "../BusinessObjects/BusinessObjects.csproj"
     },
-    "DataAccess/1.0.0": {
-      "type": "project",
-      "path": "../DataAccess/DataAccess.csproj",
-      "msbuildProject": "../DataAccess/DataAccess.csproj"
-    },
     "Repositories/1.0.0": {
       "type": "project",
       "path": "../Repository/Repositories.csproj",
       "msbuildProject": "../Repository/Repositories.csproj"
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
     },
     "VibeZDTO/1.0.0": {
       "type": "project",
@@ -10363,7 +10364,6 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "Azure.Storage.Blobs >= 12.22.1",
       "BusinessObjects >= 1.0.0",
-      "DataAccess >= 1.0.0",
       "Elasticsearch.Net >= 7.17.5",
       "Google.Apis.Auth >= 1.68.0",
       "MailKit >= 4.8.0",
@@ -10381,6 +10381,7 @@
       "Polly >= 8.4.2",
       "Polly.Extensions >= 8.4.2",
       "Repositories >= 1.0.0",
+      "Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.2",
       "VibeZDTO >= 1.0.0"
     ]
@@ -10392,11 +10393,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\VibeZOData.csproj",
+      "projectUniqueName": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\VibeZOData.csproj",
       "projectName": "VibeZOData",
-      "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\VibeZOData.csproj",
+      "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\VibeZOData.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZOData\\obj\\",
+      "outputPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZOData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -10411,24 +10412,23 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {
-              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj"
+            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj": {
+              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\BusinessObjects\\BusinessObjects.csproj"
             },
-            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\DataAccess\\DataAccess.csproj"
+            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\Repositories.csproj": {
+              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Repository\\Repositories.csproj"
             },
-            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repositories.csproj": {
-              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\Repository\\Repositories.csproj"
+            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\Service.csproj": {
+              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\Service\\Service.csproj"
             },
-            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\VibeZDTO.csproj": {
-              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ-Backend\\VibeZ\\VibeZDTO\\VibeZDTO.csproj"
+            "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZDTO\\VibeZDTO.csproj": {
+              "projectPath": "D:\\FptUniversity\\ChuyenNganh5\\SWP\\VibeZ\\VibeZ-Backend\\VibeZ\\VibeZDTO\\VibeZDTO.csproj"
             }
           }
         }
@@ -10441,8 +10441,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -10546,8 +10547,80 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Azure.Identity' 1.10.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Azure.Identity' 1.10.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-wvxc-855f-jvrv",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Identity.Client' 4.56.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
+      "libraryId": "Microsoft.Identity.Client",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1901",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Identity.Client' 4.56.0 has a known low severity vulnerability, https://github.com/advisories/GHSA-x674-v45j-fwxw",
+      "libraryId": "Microsoft.Identity.Client",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Swashbuckle.AspNetCore.SwaggerUI' 6.2.2 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qrmm-w75w-3wpx",
+      "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Security.Cryptography.Xml' 4.5.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-vh55-786g-wjwj",
+      "libraryId": "System.Security.Cryptography.Xml",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

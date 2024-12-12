@@ -7,16 +7,10 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public interface IPlaylistRepository
+    public interface IPlaylistRepository : IRepository<Playlist>
     {
         Task<IEnumerable<Playlist>> GetAllPlaylistByUserId(Guid id);
-        Task<IEnumerable<Playlist>> GetAllPlaylists();
-
-        Task<Playlist> GetPlaylistById(Guid playlistId);
         Task<IEnumerable<Track>> GetTracksByPlaylistId(Guid playlistId);
-        Task AddPlaylist(Playlist Playlist);
-        Task UpdatePlaylist(Playlist Playlist);
-        Task DeletePlaylist(Playlist playlist);
         Task<int> TotalPlaylist();
 
     }

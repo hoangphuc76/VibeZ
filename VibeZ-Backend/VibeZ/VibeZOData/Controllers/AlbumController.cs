@@ -2,6 +2,7 @@
 using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.IRepository;
+using Repositories.UnitOfWork;
 using VibeZDTO;
 using VibeZOData.Services.Blob;
 
@@ -11,14 +12,14 @@ namespace VibeZOData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlbumController(IAlbumRepository _albumRepository, ILogger<AlbumController> _logger, IMapper _mapper, IAzuriteService _azure) : ControllerBase
+    public class AlbumController(IUnitOfWork _unitOfWork, ILogger<AlbumController> _logger, IMapper _mapper, IAzuriteService _azure) : ControllerBase
     {
         // GET: api/<ValuesController>
         [HttpGet("{artistId}/all", Name = "GetAllAlbumByArtistId")]
         public async Task<ActionResult<IEnumerable<AlbumDTO>>> GetAllAlbumByArtistId(Guid artistId)
         {
             _logger.LogInformation("Getting all album");
-            var list = await _albumRepository.GetAllAlbumsByArtistId(artistId);
+            var list = await _unitOfWork.Albums.GetAllAlbumsByArtistId(artistId);
             var listDto = list.Select(album => _mapper.Map<Album, AlbumDTO>(album));
             _logger.LogInformation($"Retrieved {listDto.Count()} album");
             return Ok(listDto);
@@ -28,7 +29,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<AlbumDTO>>> GetAllalbums()
         {
             _logger.LogInformation("Getting all albums");
-            var list = await _albumRepository.GetAllAlbums();
+            var list = await _unitOfWork.Albums.GetAll();
             var listDTO = list.Select(
                 album => _mapper.Map<Album, AlbumDTO>(album));
 
@@ -42,7 +43,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<AlbumDTO>> GetAlbumById(Guid id)
         {
             _logger.LogInformation($"Fetching album with id {id}");
-            var album = await _albumRepository.GetAlbumById(id);
+            var album = await _unitOfWork.Albums.GetById(id);
             if (album == null)
             {
                 _logger.LogWarning($"album with id {id} not found");
@@ -83,7 +84,8 @@ namespace VibeZOData.Controllers
                 Nation = nation,
                 ArtistId = artistId
             };
-            await _albumRepository.AddAlbum(album);
+            await _unitOfWork.Albums.Add(album);
+            await _unitOfWork.Complete();
             _logger.LogInformation($"album created with id {album.Id}");
             return CreatedAtRoute("GetAlbumById", new { id = album.Id }, album);
         }
@@ -94,7 +96,7 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Updating album with id {id}");
 
-            var album = await _albumRepository.GetAlbumById(id);
+            var album = await _unitOfWork.Albums.GetById(id);
             if (album == null)
             {
                 _logger.LogWarning($"album with id {id} not found for update");
@@ -114,8 +116,9 @@ namespace VibeZOData.Controllers
             album.Nation = nation;
             album.UpdateDate = DateOnly.FromDateTime(DateTime.UtcNow);
 
-            await _albumRepository.UpdateAlbum(album);
+            await _unitOfWork.Albums.Update(album);
             _logger.LogInformation($"album with id {id} has been updated");
+            await _unitOfWork.Complete();
 
             return NoContent();
         }
@@ -127,15 +130,16 @@ namespace VibeZOData.Controllers
         {
             _logger.LogInformation($"Deleting album with id {id}");
 
-            var album = await _albumRepository.GetAlbumById(id);
+            var album = await _unitOfWork.Albums.GetById(id);
             if (album == null)
             {
                 _logger.LogWarning($"album with id {id} not found for deletion");
                 return NotFound("album not found!");
             }
 
-            await _albumRepository.DeleteAlbum(album);
+            await _unitOfWork.Albums.Delete(album);
             await _azure.DeleteFileAsync(album.Image);
+            await _unitOfWork.Complete();
 
             _logger.LogInformation($"album with id {id} has been deleted");
 

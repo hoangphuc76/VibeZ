@@ -1,7 +1,7 @@
 ﻿
 
 using BusinessObjects;
-using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,41 +11,34 @@ using System.Threading.Tasks;
 
 namespace Repositories.IRepository
 {
-    public class U_PackageRepository : IU_PackageRepository
+    public class U_PackageRepository : Repository<User_package>, IU_PackageRepository
     {
-        public async Task<IEnumerable<User_package>> GetAllUserPackages()
-        {
-            return await UserPackageDAO.Instance.GetAllUserPackages();
-        }
+        private readonly VibeZDbContext _context;
 
-        public async Task<User_package> GetUserPackageById(Guid id)
+        public U_PackageRepository(VibeZDbContext context) : base(context)
         {
-            return await UserPackageDAO.Instance.GetUserPackageById(id);
+            _context = context;
+        }
+  
+        public async Task<User_package> GetUserByPackageId(Guid id)
+        {
+            var userPackage = await _context.U_packages.FirstOrDefaultAsync(x => x.Id == id);
+            if (userPackage == null) return null;
+            return userPackage;
         }
         public async Task<IEnumerable<User_package>> GetPackageByUserId(Guid userId)
         {
-            return await UserPackageDAO.Instance.GetPackageByUserId(userId);
+            var userPackage = await _context.U_packages.Where(x => x.UserId == userId).AsNoTracking().ToListAsync();
+            if (userPackage == null) return null;
+            return userPackage;
         }
         public async Task<IEnumerable<User_package>> GetPackageByPackageId(Guid packId)
         {
-            return await UserPackageDAO.Instance.GetPackageByPackageId(packId);
-
+            var userPackage = await _context.U_packages.Where(x => x.PackageId == packId).AsNoTracking().ToListAsync();
+            if (userPackage == null) return null;
+            return userPackage;
         }
 
-        public async Task AddUserPackage(User_package userPackage)
-        {
-            await UserPackageDAO.Instance.Add(userPackage);
-        }
-
-        public async Task UpdateUserPackage(User_package userPackage)
-        {
-            await UserPackageDAO.Instance.Update(userPackage);
-        }
-
-        public async Task DeleteUserPackage(Guid id)
-        {
-            await UserPackageDAO.Instance.Delete(id);
-        }
     }
 
 }

@@ -3,6 +3,7 @@ using BusinessObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Repositories.IRepository;
+using Service.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,13 @@ namespace VibeZOData.Controllers
     [ApiController]
     public class ArtistDashboardController : ControllerBase
     {
-        private readonly IArtistDashboarRepository artistDashboarRepository;
+        private readonly IArtistDashboardService _artistDashboarService;
         private readonly ILogger<ArtistDashboardController> _logger;
         private readonly IMapper _mapper;
 
-        public ArtistDashboardController(IArtistDashboarRepository artistDashboarRepository, ILogger<ArtistDashboardController> logger, IMapper mapper)
+        public ArtistDashboardController(IArtistDashboardService _artistDashboarService, ILogger<ArtistDashboardController> logger, IMapper mapper)
         {
-            this.artistDashboarRepository = artistDashboarRepository;
+            this._artistDashboarService = _artistDashboarService;
             _logger = logger;
             _mapper = mapper;
         }
@@ -39,7 +40,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<int>> GetTotalFollow(Guid artistId, DateOnly startDate, DateOnly endDate)
         {
             _logger.LogInformation("GetTotalFollow called with ArtistId: {ArtistId}, StartDate: {StartDate}, EndDate: {EndDate}", artistId, startDate, endDate);
-            var result = await artistDashboarRepository.GetAllFollowById(artistId, startDate, endDate);
+            var result = await _artistDashboarService.GetAllFollowById(artistId, startDate, endDate);
             _logger.LogInformation("GetTotalFollow result: {Result}", result);
             return Ok(result);
         }
@@ -49,7 +50,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<int>> GetTotalUnFollow(Guid artistId, DateOnly startDate, DateOnly endDate)
         {
             _logger.LogInformation("GetTotalUnFollow called with ArtistId: {ArtistId}, StartDate: {StartDate}, EndDate: {EndDate}", artistId, startDate, endDate);
-            var result = await artistDashboarRepository.GetAllUnFollowById(artistId, startDate, endDate);
+            var result = await _artistDashboarService.GetAllUnFollowById(artistId, startDate, endDate);
             _logger.LogInformation("GetTotalUnFollow result: {Result}", result);
             return Ok(result);
         }
@@ -59,7 +60,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<int>> GetTotalListener(Guid artistId, DateOnly startDate, DateOnly endDate)
         {
             _logger.LogInformation("GetTotalListener called with ArtistId: {ArtistId}, StartDate: {StartDate}, EndDate: {EndDate}", artistId, startDate, endDate);
-            var result = await artistDashboarRepository.CountTotalListenerByArtist(artistId, startDate, endDate);
+            var result = await _artistDashboarService.CountTotalListenerByArtist(artistId, startDate, endDate);
             _logger.LogInformation("GetTotalListener result: {Result}", result);
             return Ok(result);
         }
@@ -69,7 +70,7 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<int>> GetTotalSavedPlaylist(Guid artistId, DateOnly startDate, DateOnly endDate)
         {
             _logger.LogInformation("GetTotalSavedPlaylist called with ArtistId: {ArtistId}, StartDate: {StartDate}, EndDate: {EndDate}", artistId, startDate, endDate);
-            var result = await artistDashboarRepository.GetTotalSavedTrack(artistId, startDate, endDate);
+            var result = await _artistDashboarService.GetTotalSavedTrack(artistId, startDate, endDate);
             _logger.LogInformation("GetTotalSavedPlaylist result: {Result}", result);
             return Ok(result);
         }
@@ -79,9 +80,8 @@ namespace VibeZOData.Controllers
         public async Task<ActionResult<IEnumerable<TrackDTO>>> GetTopSongs(Guid artistId, DateOnly startDate, DateOnly endDate)
         {
             _logger.LogInformation("GetTopSongs called with ArtistId: {ArtistId}, StartDate: {StartDate}, EndDate: {EndDate}", artistId, startDate, endDate);
-            var result = await artistDashboarRepository.GetTop10Songs(artistId, startDate, endDate);
+            var result = await _artistDashboarService.GetTop10Songs(artistId, startDate, endDate);
             var resultDto = result.Select(track => _mapper.Map<Track, TrackDTO>(track)).ToList();
-            _logger.LogInformation("GetTopSongs result count: {Count}", resultDto.Count);
             return Ok(resultDto);
         }
     }

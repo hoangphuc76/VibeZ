@@ -15,6 +15,11 @@ using VibeZOData.Services.ElasticSearch;
 using Microsoft.AspNetCore.Authentication.Google;
 using VibeZOData.Services.Email;
 using VibeZOData.Services.DailyTrackListenerService;
+using Service.IServices;
+using Service.Services;
+using Service.Services.Service.Services;
+using Repositories.UnitOfWork.Repositories.UnitOfWork;
+using Repositories.UnitOfWork;
 namespace VibeZOData
 {
     public class Program
@@ -39,21 +44,18 @@ namespace VibeZOData
             builder.Services.AddScoped<ILibrary_ArtistRepository, Library_ArtistRepository>();
             builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
             builder.Services.AddScoped<IEmailSender, EmailSender>();
-            builder.Services.AddScoped<IPasswordResetService, PasswordResetService>();
-            builder.Services.AddScoped<IPackageRepository, PackageRepository>();
             builder.Services.AddScoped<IU_PackageRepository, U_PackageRepository>();
             builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-            builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-            builder.Services.AddHostedService<DailyService>(); // Đăng ký Background Service
-            builder.Services.AddScoped<IArtistDashboarRepository,ArtistDashboardRepository>();
             builder.Services.AddScoped<IFollowRepository, FollowRepository>();
-            builder.Services.AddScoped<IArtistPendingRepository, ArtistPendingRepository>();
 
+            builder.Services.AddScoped<IPasswordResetService, PasswordResetService>();
+            builder.Services.AddHostedService<DailyService>(); // Đăng ký Background Service
+            builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<IArtistDashboardService, ArtistDashboardService>();
+            builder.Services.AddScoped<IArtistPendingService, ArtistPendingService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
-
-
-
-
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));

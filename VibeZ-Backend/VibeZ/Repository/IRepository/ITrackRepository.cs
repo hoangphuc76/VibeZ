@@ -3,15 +3,11 @@ using VibeZDTO;
 
 namespace Repositories.IRepository
 {
-    public interface ITrackRepository
+    public interface ITrackRepository : IRepository<Track>
     {
-        Task<IEnumerable<Track>> GetAllTracks();
         Task<IEnumerable<Track>> GetAllTrackByAlbumId(Guid id);
-        Task<Track> GetTrackById(Guid trackId);
-        Task AddTrack(Track track);
-        Task UpdateTrack(Track track);
+      
         Task UpdateListener(Track track);
-        Task DeleteTrack(Track track);
         Task<int> TotalTrack();
         Task<int> CountTrack(Guid artistId);
         Task<IEnumerable<AdminApprovalDTO>> GetPendingTracks();

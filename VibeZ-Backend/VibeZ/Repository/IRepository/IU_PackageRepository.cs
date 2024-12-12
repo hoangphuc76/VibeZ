@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Repositories.Repository;
 using System;
 using System.Collections.Generic;
@@ -7,17 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories.Repository
+namespace Repositories.IRepository
 {
-    public interface IU_PackageRepository
+    public interface IU_PackageRepository : IRepository<User_package>
     {
-        Task<IEnumerable<User_package>> GetAllUserPackages();
-        Task<User_package> GetUserPackageById(Guid id);
-        Task AddUserPackage(User_package userPackage);
-        Task UpdateUserPackage(User_package userPackage);
-        Task DeleteUserPackage(Guid id);
         Task<IEnumerable<User_package>> GetPackageByUserId(Guid userId);
         Task<IEnumerable<User_package>> GetPackageByPackageId(Guid packId);
+        Task<User_package> GetUserByPackageId(Guid packId);
+
     }
 
 }

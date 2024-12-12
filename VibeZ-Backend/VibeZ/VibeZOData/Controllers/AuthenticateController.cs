@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Repositories.IRepository;
+using Service.IServices;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,14 +16,14 @@ namespace VibeZOData.Controllers
 {
     [Route("odata")]
     [ApiController]
-    public class AuthenticateController(IUserRepository _userRepository, IConfiguration _config, IEmailSender _emailSender, IPasswordResetService _passwordResetService) : ControllerBase
+    public class AuthenticateController(IUserService _userService, IConfiguration _config, IEmailSender _emailSender, IPasswordResetService _passwordResetService) : ControllerBase
     {
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
         {
-            var user = await _userRepository.Authenticate(userLogin.Username, userLogin.Password);
+            var user = await _userService.Authenticate(userLogin.Username, userLogin.Password);
 
             if (user != null)
             {
@@ -55,7 +56,7 @@ namespace VibeZOData.Controllers
                 return BadRequest("Invalid Google token");
             }
 
-            var user = await _userRepository.FindByEmailAsync(payload.Email);
+            var user = await _userService.FindByEmailAsync(payload.Email);
             if (user == null)
             {
 
@@ -68,7 +69,7 @@ namespace VibeZOData.Controllers
                     Password = "GoogleLogin"
                 };
                 Console.WriteLine($"User Info: Id = {user.Id}, Email = {user.Email}, Name = {user.Name}, UserName = {user.UserName}, Password = {user.Password}");
-                await _userRepository.AddUser(user);
+                await _userService.AddUserGoogle(user);
             }
 
             var claims = new[]
@@ -108,11 +109,11 @@ namespace VibeZOData.Controllers
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] UserRegister model)
         {
-            var userExists = await _userRepository.FindByNameAsync(model.Username!);
+            var userExists = await _userService.FindByNameAsync(model.Username!);
             if (userExists != null)
                 return Conflict(new { message = "Username already exists" });
 
-            var emailExists = await _userRepository.FindByEmailAsync(model.Email!);
+            var emailExists = await _userService.FindByEmailAsync(model.Email!);
             if (emailExists != null)
                 return Conflict(new { message = "Email already exists" });
 
@@ -124,7 +125,7 @@ namespace VibeZOData.Controllers
                 Email = model.Email!,
                 Password = model.Password!
             };
-            await _userRepository.AddUser(user);
+            await _userService.AddUser(user);
 
             return Ok("Inserted Successfully");
         }
@@ -163,13 +164,13 @@ namespace VibeZOData.Controllers
                 return BadRequest(new { message = "Invalid or expired OTP" });
             }
 
-            var user = await _userRepository.FindByEmailAsync(request.Email);
+            var user = await _userService.FindByEmailAsync(request.Email);
             if (user == null)
             {
                 return NotFound(new { message = "User not found" });
             }
 
-            await _userRepository.UpdatePassword(user.Id, request.NewPassword);
+            await _userService.UpdatePassword(user.Id, request.NewPassword);
 
             _passwordResetService.InvalidateOtp(request.Email);
 

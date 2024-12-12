@@ -1,5 +1,4 @@
 ﻿using BusinessObjects;
-using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Repositories.IRepository;
 using System;
@@ -11,21 +10,26 @@ using VibeZDTO;
 
 namespace Repositories.Repository
 {
-    public class TrackRepository : ITrackRepository
+    public class TrackRepository : Repository<Track>, ITrackRepository
 
     {
         private readonly VibeZDbContext _context;
-        public TrackRepository()
+        public TrackRepository(VibeZDbContext context) : base(context) 
         {
-            _context = new VibeZDbContext();
+            _context = context;
         }
-        public async Task<IEnumerable<Track>> GetAllTracks()
+ 
+        public async Task<IEnumerable<Track>> GetAllTrackByAlbumId(Guid albumId)
         {
-            return await TrackDAO.Instance.GetAllTracks();
-        }
-        public async Task<IEnumerable<Track>> GetAllTrackByAlbumId(Guid id)
-        {
-            return await TrackDAO.Instance.GetAllTrackByAlbumId(id);
+            var list = await _context.Tracks
+                            .Where(u => u.AlbumId == albumId)
+                            .AsNoTracking()
+                            .Include(t => t.Artist)
+                            .Include(t => t.Album) // Tải Album cho mỗi Track
+                            .OrderBy(u => u.CreateDate)
+                            .ToListAsync();
+
+            return list;
         }
         public async Task<int> TotalTrack()
         {
@@ -101,7 +105,7 @@ namespace Repositories.Repository
         {
             try
             {
-                var track = await GetTrackById(trackId);
+                var track = await GetById(trackId);
                 if (track is null)
                 {
                     throw new Exception("Track not found");
@@ -118,37 +122,134 @@ namespace Repositories.Repository
                 throw new Exception("Error changing approval status", ex);
             }
         }
-        public async Task<Track> GetTrackById(Guid trackId)
-        {
-            return await TrackDAO.Instance.GetTrackById(trackId);
-        }
+
         public async Task UpdateListener(Track track)
         {
-            await TrackDAO.Instance.UpdateListener(track);
-        }
+            // Kiểm tra xem thực thể có đang được theo dõi hay không
+            var existingTrack = await _context.Tracks.FindAsync(track.TrackId);
 
-        public async Task AddTrack(Track track)
-        {
-            _context.Tracks.Add(track);
+            if (existingTrack != null)
+            {
+                // Nếu thực thể đã tồn tại trong DbContext, cập nhật giá trị Listener
+                existingTrack.Listener += 1;
+                existingTrack.UpdateDate = DateOnly.FromDateTime(DateTime.Now);
+            }
+            else
+            {
+                // Nếu không, đính kèm và cập nhật trực tiếp
+                _context.Attach(track);
+                track.Listener += 1;
+                _context.Entry(track).Property(x => x.Listener).IsModified = true;
+            }
+
             await _context.SaveChangesAsync();
         }
-
-        public async Task UpdateTrack(Track track)
+        public async Task<IEnumerable<Track>> GetTrackByIds(List<Guid> trackIds)
         {
-            _context.Tracks.Update(track);
-            await _context.SaveChangesAsync();
+            var list = await _context.Tracks
+               .Where(track => trackIds.Contains(track.TrackId))
+               .AsNoTracking()
+               .Include(t => t.Artist)
+               .Include(t => t.Album) // Tải Album cho mỗi Track
+               .ToListAsync();
+
+            return list;
         }
 
-        public async Task DeleteTrack(Track track)
+        private async Task<IEnumerable<Track>> RecommendSongsBasedOnRecentTracks(List<Guid> recentlyPlayedIds)
         {
-            _context.Tracks.Remove(track);
-            await _context.SaveChangesAsync();
-        }
-        public async Task<IEnumerable<Track>> GetTrackByIds(List<Guid> trackIds) => await TrackDAO.Instance.GetTrackByIds(trackIds);
 
+            // Lấy các bài hát đã nghe gần đây và tải thông tin liên quan (Artist, Album)
+            var recentlyPlayedTracks = await _context.Tracks
+                .Where(track => recentlyPlayedIds.Contains(track.TrackId))
+                .AsNoTracking()
+                .Include(t => t.Artist) // Tải thông tin Artist cho mỗi Track đã nghe gần đây
+                .Include(t => t.Album)  // Tải thông tin Album cho mỗi Track đã nghe gần đây
+                .ToListAsync();
+
+            if (!recentlyPlayedTracks.Any())
+                return Enumerable.Empty<Track>();
+
+            // Lấy thể loại và nghệ sĩ của các bài hát đã nghe
+            var genres = recentlyPlayedTracks.Select(t => t.Genre).Distinct().ToList();
+            var artists = recentlyPlayedTracks.Select(t => t.ArtistId).Distinct().ToList();
+
+            // Gợi ý các bài hát khác thuộc cùng thể loại hoặc nghệ sĩ
+            var recommendedTracks = await _context.Tracks
+                .Where(track => genres.Contains(track.Genre) || artists.Contains(track.ArtistId))
+                .Where(track => !recentlyPlayedIds.Contains(track.TrackId))
+                .AsNoTracking()// Loại bỏ bài hát đã nghe
+                .Include(t => t.Artist) // Tải thông tin Artist cho các bài hát gợi ý
+                .Include(t => t.Album)  // Tải thông tin Album cho các bài hát gợi ý
+                .ToListAsync();
+
+            return recommendedTracks;
+        }
+        private async Task<IEnumerable<Track>> RecommendPopularSongs(int topN = 10)
+        {
+
+            // Lấy các bài hát phổ biến nhất dựa trên số lượt nghe (listener count)
+            var popularTracks = await _context.Tracks
+                .OrderByDescending(track => track.Listener) // Sắp xếp theo số lượt nghe
+                .Take(topN)
+                .AsNoTracking()// Lấy top N bài hát phổ biến nhất
+                .Include(t => t.Artist) // Tải thông tin Artist cho mỗi Track
+                .Include(t => t.Album)  // Tải thông tin Album cho mỗi Track
+                .ToListAsync();
+
+            return popularTracks;
+        }
+        private async Task<IEnumerable<Track>> RecommendRandomSongs(int topN = 10)
+        {
+
+            var random = new Random();
+
+            // Lấy ngẫu nhiên top N bài hát từ cơ sở dữ liệu
+            var randomTracks = await _context.Tracks
+                .OrderBy(x => random.Next())  // Random gợi ý
+                .Take(topN)
+                .AsNoTracking()
+                .Include(t => t.Artist) // Tải thông tin Artist cho mỗi Track
+                .Include(t => t.Album)  // Tải thông tin Album cho mỗi Track
+                .ToListAsync();
+
+            return randomTracks;
+        }
+
+
+      
         public async Task<IEnumerable<Track>> GetSongRecommendations(List<Guid> recentlyPlayedIds, Guid clickedTrackId, int topN = 10)
         {
-            return await TrackDAO.Instance.GetSongRecommendations(recentlyPlayedIds, clickedTrackId, topN);
+            // Lấy bài hát vừa được click và tải thông tin liên quan (Artist, Album)
+            var clickedTrack = await _context.Tracks
+                .AsNoTracking()
+                .Include(t => t.Artist)
+                .Include(t => t.Album)
+                .FirstOrDefaultAsync(t => t.TrackId == clickedTrackId);
+
+            if (clickedTrack == null)
+                return Enumerable.Empty<Track>();
+
+            // Gợi ý dựa trên các bài hát đã nghe gần đây
+            var contentBasedRecommendations = await RecommendSongsBasedOnRecentTracks(recentlyPlayedIds);
+
+            // Nếu không có bài hát gợi ý dựa trên nội dung, gợi ý theo độ phổ biến
+            if (!contentBasedRecommendations.Any())
+            {
+                contentBasedRecommendations = await RecommendPopularSongs(topN);
+            }
+
+            // Nếu vẫn không có, gợi ý bài hát ngẫu nhiên
+            if (!contentBasedRecommendations.Any())
+            {
+                contentBasedRecommendations = await RecommendRandomSongs(topN);
+            }
+
+            // Đặt bài hát vừa click lên đầu danh sách
+            var recommendationQueue = new List<Track> { clickedTrack };
+            recommendationQueue.AddRange(contentBasedRecommendations.Where(t => t.TrackId != clickedTrackId)); // Loại bỏ bài đã click trong gợi ý
+
+            return recommendationQueue;
         }
 
 
